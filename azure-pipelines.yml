@@ -10,8 +10,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: |
+    git clone -c http.extraheader="AUTHORIZATION: bearer $(System.AccessToken)" https://github.com/dotnet/orleans api-src
+  displayName: 'Clone Orleans'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
