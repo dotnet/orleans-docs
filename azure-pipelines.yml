@@ -7,14 +7,20 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-2019'
 
 steps:
 - script: |
     git clone https://github.com/dotnet/orleans api-src
   displayName: 'Clone Orleans'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- powershell: |
+    choco install docfx -y
+  displayName: 'Install DocFx'
+
+- powershell: |
+    docfx src/docfx.json
+    if ($lastexitcode -ne 0) {
+      throw ("Error generating document")
+    }
+  displayName: 'docfx build'
