@@ -29,7 +29,7 @@ This article assume that you have the following prerequisites installed:
 * [Docker](https://www.docker.com/community-edition#/download) - Docker4X has a easy-to-use installer for the major supported platforms. It contains Docker engine and also Docker Swarm.
 * [Kubernetes (K8s)](https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/) - Google's offer for Container Orchestration. It contains a guidance to install *Minikube* (a local deployment of K8s) and *kubectl* along with all its dependencies.
 * [.Net Core](https://dot.net) - Cross-platform flavor of .Net 
-* [Visual Studio Code (VSCode)](https://code.visualstudio.com/) - You can use whatever IDE you want. VSCode is cross-platform so we are using it to ensure it works on all platforms. Once you installed VSCode, install the [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
+* [Visual Studio Code (VSCode)](https://code.visualstudio.com/) - You can use whatever IDE you want. VSCode is cross-platform so we are using it to ensure it works on all platforms. Once you installed VSCode, install the [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 
 > **Note**: You are not required to have Kubernetes installed if you are not going to use it. Docker4X installer already includes Swarm so no extra installation is required to use it. 
 
