@@ -1,0 +1,33 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Dispatch to dotnet/orleans
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Repository Dispatch
+      # You may pin to the exact commit or the version.
+      # uses: peter-evans/repository-dispatch@95531d6358eb144ac65db1d7f39af794979ea97e
+      uses: peter-evans/repository-dispatch@v1.1.2
+      with:
+        # A repo scoped GitHub Personal Access Token
+        token: ${{ secrets.REPO_ACCESS_TOKEN }}
+        # The full name of the repository to send the dispatch.
+        repository: "dotnet/orleans"
+        # A custom webhook event name.
+        event-type: "update-docs"
+        # JSON payload with extra information about the webhook event that your action or worklow may use.
+        client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
