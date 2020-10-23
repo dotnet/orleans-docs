@@ -5,14 +5,9 @@
         "files": [
           "**/**.yml",
           "**/**.md"
-        ]
-      },
-      {
-        "files": [
-          "toc.yml",
-          "*.md"
         ],
         "exclude": [
+          "readme.md",
           "obj/**",
           "_site/**"
         ]
@@ -21,6 +16,7 @@
     "resource": [
       {
         "files": [
+          "readme.md",
           "Build.cmd",
           "Test.cmd",
           "assets/**",
