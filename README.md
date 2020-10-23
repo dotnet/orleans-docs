@@ -1,6 +1,8 @@
-# Orleans Documentation
+# Orleans documentation
 
-## Building the Documentation
+[Orleans' documentation is published here,](https://dotnet.github.io/orleans/)
+
+## Building the documentation
 
 To build the documentation you will need a copy of [DocFX](https://dotnet.github.io/docfx/) on your path.
 Alternatively, on Windows, you can run `dotnet build src` to build the documentation using a version of DocFx from NuGet.
