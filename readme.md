@@ -3,6 +3,7 @@
 ## Building the Documentation
 
 To build the documentation you will need a copy of [DocFX](https://dotnet.github.io/docfx/) on your path.
+Alternatively, on Windows, you can run `dotnet build src` to build the documentation using a version of DocFx from NuGet.
 
 If you're on Linux/OSX you can run DocFX with Mono.
 
