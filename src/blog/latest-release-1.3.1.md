@@ -30,4 +30,4 @@ This removed the ambiguous possibility of passing two different Deployment IDs, 
 
 1.3.0 was a pretty big release with numerous improvements, bug fixes, and the major new feature of geo-distributed multi-clusters.
 Most of its content is listed in the [1.3.0-beta2 release notes](https://github.com/dotnet/orleans/releases/tag/v1.3.0-beta2).
-The geo-distribution functionality is described in the [Multi-Cluster Support section](http://dotnet.github.io/orleans/Documentation/Multi-Cluster/Overview.html) of the docs.
+The geo-distribution functionality is described in the [Multi-Cluster Support section](~/docs/deployment/multi-cluster_support/Overview.md) of the docs.

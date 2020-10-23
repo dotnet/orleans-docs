@@ -26,7 +26,7 @@ For this tutorial we’re going to create 4 projects:
 
 After following this tutorial, the complete Solution should look like this:
 
-![](/images/orleansbasics_complete_app.png)
+![](~/images/orleansbasics_complete_app.png)
 
 ### Create the structure in Visual Studio
 
@@ -117,7 +117,7 @@ namespace OrleansBasics
 ### Create the Silo – Program.cs
 
 At this step, we add code to initialize a server that will host and run our grains - a silo.
-We will use the development clustering provider here, so that we can run everything locally, without a dependency on external storage systems. You can find more information about that in the [Local Development Configuration](http://dotnet.github.io/orleans/Documentation/clusters_and_clients/configuration_guide/local_development_configuration.html) page of the Orleans documentation.
+We will use the development clustering provider here, so that we can run everything locally, without a dependency on external storage systems. You can find more information about that in the [Local Development Configuration](~/docs/clusters_and_clients/configuration_guide/local_development_configuration.md) page of the Orleans documentation.
 We will run a cluster with a single silo in it.
 
 Add the following code to Program.cs of the Silo project:
@@ -183,7 +183,7 @@ namespace OrleansBasics
 
 Finally, we need to configure a client for communicating with our grains, connect it to the the cluster (with a single silo in it), and invoke the grain.
 Note that the clustering configuration must match the one we used for the silo.
-There is more information about the client in the [Clusters and Clients](http://dotnet.github.io/orleans/Documentation/clusters_and_clients/index.html) section of the Orleans documentation.
+There is more information about the client in the [Clusters and Clients](~/docs/clusters_and_clients/index.md) section of the Orleans documentation.
 
 ``` csharp
 using Microsoft.Extensions.Logging;
@@ -258,11 +258,11 @@ Build the solution and run the Silo.
 After you get the confirmation message that the Silo is running ("Press enter to terminate..."), run the Client.
 Success looks like this:
 
-![](/images/orleansbasics_success.png)
+![](~/images/orleansbasics_success.png)
 
 
 ## Further Reading
 
- - [List of Orleans Packages](http://dotnet.github.io/orleans/Documentation/core_concepts/what_are_orleans_packages.html)
- - [Orleans Configuration Guide](http://dotnet.github.io/orleans/Documentation/clusters_and_clients/configuration_guide/index.html)
+ - [List of Orleans Packages](~/docs/resources/nuget_packages.md)
+ - [Orleans Configuration Guide](~/docs/clusters_and_clients/configuration_guide/index.md)
  - [Orleans Best Practices](https://www.microsoft.com/en-us/research/publication/orleans-best-practices)

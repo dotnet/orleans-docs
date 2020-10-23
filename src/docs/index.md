@@ -246,7 +246,7 @@ or
 
 * Ask questions by [opening an issue on GitHub](https://github.com/dotnet/orleans/issues) or on [Stack Overflow](https://stackoverflow.com/questions/ask?tags=orleans)
 * [Chat on Gitter](https://gitter.im/dotnet/orleans)
-* [Orleans Blog](/blog)
+* [Orleans Blog](~/blog/index.md)
 * Follow the [@msftorleans](https://twitter.com/msftorleans) Twitter account for Orleans announcements.
 * [OrleansContrib - GitHub organization for community add-ons to Orleans](https://github.com/OrleansContrib/) Various community projects, including Monitoring, Design Patterns, Storage Providers, etc.
 * Guidelines for developers wanting to [contribute code changes to Orleans](resources/contributing.md).
