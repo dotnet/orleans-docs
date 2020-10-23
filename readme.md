@@ -23,7 +23,7 @@ You'll then be able to browse the website on [http://localhost:8080](http://loca
 
 ## Editing the Documentation
 
-Please edit the markdown files in the `src\` directory.
+Please edit the markdown files in the `src` directory.
 
 The `toc.yml` files are used to create the menus. Any new markdown files you add will need to be included in the appropriate `toc.yml` file. This may include the `toc.yml` file at the same level in the directory structure, and possibly in the parent directory too.
 
