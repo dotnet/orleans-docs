@@ -59,8 +59,8 @@
       "_appTitle": "Microsoft Orleans Documentation",
       "_enableSearch": true,
       "_gitContribute": {
-        "repo": "https://github.com/dotnet/orleans",
-        "branch": "docs"
+        "repo": "https://github.com/dotnet/orleans-docs",
+        "branch": "master"
       },
 	  "_gitUrlPattern": "github",
     "_docfxVersion": "2"
