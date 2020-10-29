@@ -1,6 +1,6 @@
 ---
 layout: page
-title: What is a grain client
+title: Clients
 ---
 
 ### What is a Grain Client?

@@ -5,15 +5,10 @@
   href: grains/toc.yml
 - name: Streaming
   href: streaming/toc.yml
-- name: Hosting
-  href: clusters_and_clients/toc.yml
-  items:
-  - name: Configuration Guide
-    href: index.md
-  - name: Monitoring
-    href: index.md
-  - name: Deployment
-    href: deployment/toc.yml
+- name: Host
+  href: host/toc.yml
+- name: Deployment
+  href: deployment/toc.yml
 - name: Tutorials and Samples
   href: tutorials_and_samples/toc.yml
 - name: Implementation Details

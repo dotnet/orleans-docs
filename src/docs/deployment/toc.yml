@@ -1,5 +1,9 @@
 - name: Running the Application
   href: index.md
+- name: Kubernetes
+  href: kubernetes.md
+- name: Service Fabric
+  href: service_fabric.md
 - name: Handling Failures
   href: handling_failures.md
 - name: Using Azure Web Apps with Azure Cloud Services
