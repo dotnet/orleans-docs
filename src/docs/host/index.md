@@ -3,11 +3,51 @@ layout: page
 title: Clients
 ---
 
-### What is a Grain Client?
+# Clients
 
-The term "Client" or sometimes "Grain Client" is used for application code that interacts with grains but itself is not part of a grain logic.
-Client code runs outside of the cluster of Orleans servers called silos where grains are hosted.
-Hence, a client acts as a connector or conduit to the cluster and to all grains of the application.
+A client allows non-grain code to interact with an Orleans cluster.
+Clients allow application code to communicate with grains and streams hosted in a cluster.
+There are two ways to obtain a client, depending on where the client code is hosted: in the same process as a silo, or in a separate process.
+This article will discuss both options, starting with the recommended option: co-hosting the client code in the same process as the grain code.
+
+## Co-hosted clients
+
+If the client code is hosted in the same process as the grain code, then the client can be directly obtained from the hosting application's dependency injection container.
+In this case, the client communicates directly with the silo it is attached to and can take advantage of the extra knowledge that the silo has about the cluster.
+
+This provides several benefits, including reducing network and CPU overhead as well as decreasing latency and increasing throughput and reliability.
+The client utilizes the silo's knowledge of the cluster topology and state and does not need to use a separate gateway.
+This avoids a network hop and serialization/deserialization round trip.
+This therefore also increases reliability, since the number of required nodes in between the client and the grain is minimized.
+If the grain is a [stateless worker grain](~/docs/grains/stateless_worker_grains.md) or otherwise happens to be activated on the silo which the client is hosted in, then no serialization or network communication needs to be performed at all and the client can reap additional performance and reliability gains.
+Co-hosting client and grain code also simplifies deployment and application topology by eliminating the need for two distinct application binaries to be deployed and monitored.
+
+There are also detractors to this approach, primarily that the grain code is no longer isolated from the client process.
+Therefore, issues in client code, such as blocking IO or lock contention causing thread starvation can affect the performance of grain code.
+Even without code defects like the abovementioned, *noisy neighbor* effects can result simply by having the client code execute on the same processor as grain code, putting additional strain on CPU cache and additional contention for local resources in general.
+Additionally, identifying the source of these issues is now more difficult because monitoring systems cannot distinguish what is logically client code from grain code.
+
+Despite these detractors, co-hosting client code with grain code is a popular option and the recommended approach for most applications.
+To elaborate, the abovementioned detractors are minimal in practice for the following reasons:
+
+* Client code is often very *thin*, for example translating incoming HTTP requests into grain calls, and therefore the *noisy neighbor* effects are minimal and comparable in cost to the otherwise required gateway.
+* In the event that a performance issue arises, the typical workflow for a developer involves tools such as CPU profilers and debuggers, which are still effective in quickly identifying the source of the issue despite having both client and grain code executing in the same process. In other words, metrics become more coarse and less able to precisely identify the source of an issue, but more detailed tools are still effective.
+
+### Obtaining a client from a host
+
+If hosting using the [.NET Generic Host](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host), the client will be available in the host's [dependency injection](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection) container automatically and can be injected into services such as [ASP.NET controllers](https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/actions) or [`IHostedService`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.ihostedservice) implementations.
+
+Alternatively, a client interface such as `IGrainFactory` or `IClusterClient` can be obtained from either `IHost` or `ISiloHost`:
+
+``` C#
+var client = host.Services.GetService<IClusterClient>();
+await client.GetGrain<IMyGrain>(0).Ping();
+```
+
+## External clients
+
+Client code can run outside of the Orleans cluster where grain code is hosted.
+Hence, an external client acts as a connector or conduit to the cluster and to all grains of the application.
 
 ![](~/images/frontend_cluster.png)
 
@@ -123,9 +163,10 @@ The grain reference is not invalidated in this situation; the call could be retr
 
 ### Dependency Injection
 
-The recommended way to use a cluster client in a program that uses the .NET Generic Host is to inject an `IClusterClient` singleton instance via dependency injection, which can then be accepted as a constructor parameter in hosted services, ASP.NET controllers, etc.
+The recommended way to create an external client in a program that uses the .NET Generic Host is to inject an `IClusterClient` singleton instance via dependency injection, which can then be accepted as a constructor parameter in hosted services, ASP.NET controllers, etc.
 
-Note that when co-hosting an Orleans silo in the same process that will be connecting to it, it is *not* necessary to manually create a client; Orleans will automatically provide one and manage its lifetime appropriately.
+[!NOTE]
+When co-hosting an Orleans silo in the same process that will be connecting to it, it is *not* necessary to manually create a client; Orleans will automatically provide one and manage its lifetime appropriately.
 
 When connecting to a cluster in a different process (e.g. on a different machine), a common pattern is to create a hosted service like this:
 
