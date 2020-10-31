@@ -1,6 +1,6 @@
 - name: Clients
-  href: index.md
-  homepage: index.md
+  href: client.md
+  homepage: client.md
 - name: Silo Lifecycle
   href: silo_lifecycle.md
 - name: Heterogeneous Silos
