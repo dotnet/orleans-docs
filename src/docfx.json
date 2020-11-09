@@ -32,7 +32,8 @@
           "logo-light.svg",
           "tutorials_and_samples/**.png",
           "blog/media/**.png",
-          "blog/media/**.jpg"
+          "blog/media/**.jpg",
+          "google8df5bb4c968b406e.html"
         ],
         "exclude": [
           "obj/**",
@@ -64,6 +65,9 @@
       },
 	  "_gitUrlPattern": "github",
     "_docfxVersion": "2"
+    },
+    "sitemap": {
+      "baseUrl": "https://dotnet.github.io/orleans"
     }
   }
 }
