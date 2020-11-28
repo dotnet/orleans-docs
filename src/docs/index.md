@@ -144,7 +144,7 @@ This allows for greater decoupling of stream producers and consumers from each o
 Stream processing is reliable: grains can store checkpoints (cursors) and reset to a stored checkpoint during activation or at any point afterwards.
 Streams supports batch delivery of messages to consumers to improve efficiency and recovery performance.
 Streams are backed by queueing services such as Azure Event Hubs, Amazon Kinesis, and others.
-An arbitrary number of streams can be multiplexed onto a smaller number of queues and the responsibility for processing these queues is balanced evently across the cluster. 
+An arbitrary number of streams can be multiplexed onto a smaller number of queues and the responsibility for processing these queues is balanced evenly across the cluster. 
 
 ### Timers &amp; Reminders
 
