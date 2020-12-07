@@ -14,7 +14,7 @@ In this example the client and Silo{1,2,3} were compiled with grain interface `A
 -	Streaming interfaces are not versioned
 
 ## Enable versioning
-By default, grains are not versioned. You can version grain by using the VersionAttribute on the grain interface:
+If the version attribute is not explicitly added to the grain interface, then the grains have a default version of 0. You can version grain by using the VersionAttribute on the grain interface:
 
 ``` cs
 [Version(X)]
