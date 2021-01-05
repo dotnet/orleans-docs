@@ -6,13 +6,15 @@ title: Configuring .NET Garbage Collection
 # Configuring .NET Garbage Collection
 
 For good performance, it is important to configure .NET garbage collection for the silo process the right way.
-The best combination of settings we found is to set gcServer=true and gcConcurrent=true.
+The best combination of settings we found is to set `gcServer=true` and `gcConcurrent=true`.
 These are easy to set via the application csproj file.
 See below as an example:
 
-## .NET Framework and .NET Core
+## .NET Core
 
-``` csproj
+> Note: This method is not supported with SDK style projects compiling against the full .NET Framework
+
+```xml
 // .csproj
 <PropertyGroup>
   <ServerGarbageCollection>true</ServerGarbageCollection>
@@ -20,7 +22,9 @@ See below as an example:
 </PropertyGroup>
 ```
 
-## .NET Framework with old .csproj project format
+## .NET Framework
+
+> Note: SDK style projects compiling against the full .NET Framework should still use this configuration style
 
 ``` xml
 // App.config
