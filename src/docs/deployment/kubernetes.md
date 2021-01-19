@@ -34,11 +34,11 @@ kind: Deployment
 metadata:
   name: dictionary-app
   labels:
-    serviceId: dictionary-app
+    orleans/serviceId: dictionary-app
 spec:
   selector:
     matchLabels:
-      serviceId: dictionary-app
+      orleans/serviceId: dictionary-app
   replicas: 3
   template:
     metadata:
