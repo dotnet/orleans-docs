@@ -27,7 +27,9 @@ namespace Tests
         [Fact]
         public async Task SaysHelloCorrectly()
         {
-            var cluster = new TestCluster();
+            var builder = new TestClusterBuilder();
+            builder.Options.ServiceId = Guid.NewGuid().ToString();
+            var cluster = builder.Build();
             cluster.Deploy();
 
             var hello = cluster.GrainFactory.GetGrain<IHelloGrain>(Guid.NewGuid());
