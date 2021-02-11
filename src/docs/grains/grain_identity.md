@@ -30,7 +30,7 @@ Because the underlying data is the same, the schemes can be used interchangeably
 When a long integer is used, a GUID is actually created and padded with zeros.
 
 Situations that require a singleton grain instance, such as a dictionary or registry, benefit from using `Guid.Empty` as its key.
-This is merely a convention, but by adhering, it becomes clear at the call site that it is what is going on, as we saw in the first tutorial.
+This is merely a convention, but by adhering to this convention it becomes clear at the caller site that a singleton grain is in use, as we saw in the first tutorial.
 
 ## Using GUIDs
 
@@ -64,7 +64,7 @@ Referencing a grain by long integer in client code:
 var grain = grainFactory.GetGrain<IExample>(1);
 ```
 
-Retrieving the primary key form grain code:
+Retrieving the primary key from grain code:
 
 ``` csharp
 public override Task OnActivateAsync()
@@ -84,7 +84,7 @@ Referencing a grain by String in client code:
 var grain = grainFactory.GetGrain<IExample>("myGrainKey");
 ```
 
-Retrieving the primary key form grain code:
+Retrieving the primary key from grain code:
 
 ``` csharp
 public override Task OnActivateAsync()
@@ -95,7 +95,7 @@ public override Task OnActivateAsync()
 ```
 ## Using Compound Primary Key
 
-If you have a system that doesn't fit well with either GUIDs or longs, you can opt for a compound primary key which allows you to use a combination of a GUID or long and a string to reference a grain.
+If you have a system that doesn't fit well with either GUIDs or longs, you can opt for a compound primary key, which allows you to use a combination of a GUID or long and a string to reference a grain.
 
 You can inherit your interface from 'IGrainWithGuidCompoundKey' or 'IGrainWithIntegerCompoundKey" interface like this:
 
@@ -106,7 +106,7 @@ public interface IExampleGrain : Orleans.IGrainWithIntegerCompoundKey
 }
 ```
 
-In client code, this adds a second argument to the `GetGrain` method on the grain factory.
+In client code, this adds a second argument to the `GetGrain` method on the grain factory:
 
 ``` csharp
 var grain = grainFactory.GetGrain<IExample>(0, "a string!", null);
