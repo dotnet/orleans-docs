@@ -8,7 +8,7 @@ Grain activations are single-threaded and, by default, process each request from
 
 * The grain class is marked as `[Reentrant]`
 * The interface method is marked as `[AlwaysInterleave]`
-* The requests within the same call chain
+* The requests are made within the same call chain
 * The grain's *MayInterleave* predicate returns `true`
 
 Each of those cases are discussed in the following sections.
@@ -22,7 +22,7 @@ Execution is still limited to a single thread, so the activation is still execut
 
 Reentrant grain code will never run multiple pieces of grain code in parallel (execution of grain code will always be single-threaded), but reentrant grains **may** see the execution of code for different requests interleaving. That is, the continuation turns from different requests may interleave.
 
-For example, with the below pseudo-code, when Foo and Bar are 2 methods of the same grain class:
+For example, with the pseudo-code below, when Foo and Bar are 2 methods of the same grain class:
 
 ``` csharp
 Task Foo()
@@ -46,13 +46,13 @@ Line 1, line 3, line 2 and line 4. That is, the turns from different requests in
 
 If the grain was not reentrant, the only possible executions would be: line 1, line 2, line 3, line 4 OR: line 3, line 4, line 1, line 2 (new request cannot start before the previous one finished).
 
-The main tradeoff in choosing between reentrant and non-reentrant grains is the code complexity to make interleaving work correctly and the difficulty to reason about it.
+The main tradeoff in choosing between reentrant and non-reentrant grains is the code complexity to make interleaving work correctly, and the difficulty to reason about it.
 
-In a trivial case when the grains are stateless and the logic is simple, fewer (but not too few, so that all the hardware threads are used) reentrant grains should be in general slightly more efficient.
+In a trivial case when the grains are stateless and the logic is simple, fewer (but not too few, so that all the hardware threads are used) reentrant grains should in general be slightly more efficient.
 
 If the code is more complex, then a larger number of non-reentrant grains, even if slightly less efficient overall, should save you a lot of grief of figuring out non-obvious interleaving issues.
 
-In the end answer will depend on the specifics of the application.
+In the end, the answer will depend on the specifics of the application.
 
 ## Interleaving methods
 
@@ -139,7 +139,7 @@ var evenGrain = client.GetGrain<IEvenGrain>(0);
 await evenGrain.IsEven(2);
 ```
 
-The above code calls `IEvenGrain.IsEven(2)`, which calls `IOddGrain.IsOdd(1)`, which calls `IEvenGrain.IsEven(0)`, which returns `true` back up the call chain to the client. Without call chain reentrancy, the above code will result in a deadlock when `IOddGrain` calls `IEvenGrain.IsEven(0)`. With call chain reentrancy, however, the call is allowed to proceed as it is deemed to be the intention of the developer.
+The above code calls `IEvenGrain.IsEven(2)`, which calls `IOddGrain.IsOdd(1)`, which calls `IEvenGrain.IsEven(0)`, which returns `true` back up the call chain to the client. Without call chain reentrancy, the above code will result in a deadlock when `IOddGrain` calls `IEvenGrain.IsEven(0)`. However, with call chain reentrancy, the call is allowed to proceed, as it is deemed to be the intention of the developer.
 
 This behavior can be disabled by setting `SchedulingOptions.AllowCallChainReentrancy` to `false`. For example:
 
@@ -150,7 +150,7 @@ siloHostBuilder.Configure<SchedulingOptions>(
 
 ## Reentrancy using a predicate
 
-Grain classes can specify a predicate used to determine interleaving on a call-by-call basis by inspecting the request. The `[MayInterleave(string methodName)]` attribute provides this functionality. The argument to the attribute is the name of a static method within the grain class which accepts an `InvokeMethodRequest` object and returns a `bool` indicating whether or not the request should be interleaved.
+Grain classes can specify a predicate to determine interleaving on a call-by-call basis by inspecting the request. The `[MayInterleave(string methodName)]` attribute provides this functionality. The argument to the attribute is the name of a static method within the grain class which accepts an `InvokeMethodRequest` object and returns a `bool` indicating whether or not the request should be interleaved.
 
 Here is an example which allows interleaving if the request argument type has the `[Interleave]` attribute:
 
