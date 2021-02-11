@@ -26,7 +26,7 @@ Unlike in the client subscription case, the subscribing grain simply implements 
 
 Let's assume that we have a grain that periodicaly sends messages to clients. For simplicity, the message in our example will be a  string. We first define the interface on the client that will receive the message.
 
-the interface will look like this
+The interface will look like this
 
 ``` csharp
 public interface IChat : IGrainObserver
@@ -50,7 +50,7 @@ public class Chat : IChat
 }
 ```
 
-Now on the server we should have a Grain which sends these chat messages to clients. The Grain also should have a mechanism for clients to subscribe and unsubscribe themselves to receive notifications. For subscription the Grain can use the utility class `ObserverSubscriptionManager`. This class throws an `OrleansException` if you try to subscribe an observer that is already subscribed (or unsubscribe an observer that is not subscribed), so it is important to handle this case by using the `IsSubscribed()` method or by handling the `OrleansException`:
+On the server, we should next have a Grain which sends these chat messages to clients. The Grain should also have a mechanism for clients to subscribe and unsubscribe themselves for notifications. For subscriptions, the Grain can use the utility class `ObserverSubscriptionManager`. This class throws an `OrleansException` if you try to subscribe to an observer that is already subscribed to (or unsubscribe from an observer that is not subscribed to), so it is important to handle this case by using the `IsSubscribed()` method or by handling the `OrleansException`:
 
 ``` csharp
 class HelloGrain : Grain, IHello
@@ -74,7 +74,7 @@ class HelloGrain : Grain, IHello
         return Task.CompletedTask;
     }
 
-    //Also clients use this to unsubscribe themselves to no longer receive the messages.
+    //Clients use this to unsubscribe and no longer receive messages.
     public Task UnSubscribe(IChat observer)
     {
         if (_subsManager.IsSubscribed(observer))
@@ -86,7 +86,7 @@ class HelloGrain : Grain, IHello
 }
 ```
 
-To send the message to clients the `Notify` method of the `ObserverSubscriptionManager<IChat>` instance can be used. The method takes an `Action<T>` method or lambda expression (where `T` is of type `IChat` here). You can call any method on the interface to send it to clients. In our case we only have one method `ReceiveMessage` and our sending code on the server would look like this:
+To send a message to clients, the `Notify` method of the `ObserverSubscriptionManager<IChat>` instance can be used. The method takes an `Action<T>` method or lambda expression (where `T` is of type `IChat` here). You can call any method on the interface to send it to clients. In our case we only have one method, `ReceiveMessage`, and our sending code on the server would look like this:
 
 ``` csharp
 public Task SendUpdateMessage(string message)
@@ -97,7 +97,7 @@ public Task SendUpdateMessage(string message)
 
 ```
 
-Now our server has a method to send messages to observer clients, two methods for subscribing/unsubscribing and the client implemented a class to be able to observe the grain messages. The last step is to create an observer reference on the client using our previously implemented `Chat` class and let it receive the messages after subscribing it.
+Now our server has a method to send messages to observer clients, two methods for subscribing/unsubscribing, and the client has implemented a class able to observe the grain messages. The last step is to create an observer reference on the client using our previously implemented `Chat` class, and let it receive the messages after subscribing to it.
 
 The code would look like this:
 
@@ -106,7 +106,7 @@ The code would look like this:
 var friend = GrainClient.GrainFactory.GetGrain<IHello>(0);
 Chat c = new Chat();
 
-//Create a reference for chat usable for subscribing to the observable grain.
+//Create a reference for chat, usable for subscribing to the observable grain.
 var obj = await GrainClient.GrainFactory.CreateObjectReference<IChat>(c);
 //Subscribe the instance to receive messages.
 await friend.Subscribe(obj);
@@ -116,5 +116,5 @@ Now whenever our grain on the server calls the `SendUpdateMessage` method, all s
 
 **Note:** Objects passed to `CreateObjectReference` are held via a [`WeakReference<T>`](https://msdn.microsoft.com/en-us/library/system.weakreference) and will therefore be garbage collected if no other references exist. Users should maintain a reference for each observer which they do not want to be collected.
 
-**Note:** Observers are inherently unreliable since you don't get any response back to know if the message is received and processed or simply failed due to any condition which might arise in a distributed system. Because of that your observers should poll the grain periodically or use any other mechanism to ensure that they received all messages which they should have received.
-In some situations you can afford to lose some messages and you don't need any additional mechanism but if you need to make sure that all observers are always receiving the messages and are receiving all of them, both periodic resubscriptions and polling the observer grain, can help to ensure eventual processing of all messages.
+**Note:** Observers are inherently unreliable, since you don't get any response back to know if the message is received and processed or simply failed due to any condition which might arise in a distributed system. Because of that, your observers should poll the grain periodically or use any other mechanism to ensure that they received all messages which they should have received.
+In some situations you can afford to lose some messages and you don't need any additional mechanism, but if you need to make sure that all observers are always receiving the messages and are receiving all of them, both periodic resubscriptions and polling the observer grain can help to ensure eventual processing of all messages.
