@@ -5,8 +5,8 @@ title: Developing a Grain
 
 # Setup
 
-Before you write code to implement a grain class, create a new Class Library project targeting .NET Standard (preferred) or .NET Framework 4.6.1 or higher (if you cannot use .NET Standard due to dependencies).
-Grain interfaces and grain classes can be defined in the same Class Library project or in two different projects for better separation of interfaces from implementation.
+Before you write code to implement a grain class, create a new Class Library project targeting .NET Standard or .Net Core (preferred) or .NET Framework 4.6.1 or higher (if you cannot use .NET Standard or .NET Core due to dependencies).
+Grain interfaces and grain classes can be defined in the same Class Library project, or in two different projects for better separation of interfaces from implementation.
 In either case, the projects need to reference `Microsoft.Orleans.Core.Abstractions` and `Microsoft.Orleans.CodeGenerator.MSBuild` NuGet packages.
 
 For more thorough instructions, see the [Project Setup](~/docs/tutorials_and_samples/tutorial_1.md#project-setup) section of [Tutorial One – Orleans Basics](~/docs/tutorials_and_samples/tutorial_1.md).
@@ -101,7 +101,7 @@ public async Task<SomeType> GrainMethod3()
 }
 ```
 
-A "void" grain methods marked as `async` that returns no value simply returns at the end of their execution:
+A "void" grain method marked as `async` that returns no value simply returns at the end of its execution:
 
 ```csharp
 public async Task GrainMethod4()
@@ -111,7 +111,7 @@ public async Task GrainMethod4()
 }
 ```
 
-If a grain method receives the return value from another asynchronous method call, to a grain or not, and doesn't need to perform error handling of that call, it can simply return the `Task` it receives from that asynchronous call as its return value:
+If a grain method receives the return value from another asynchronous method call, to a grain or not, and doesn't need to perform error handling of that call, it can simply return the `Task` it receives from that asynchronous call:
 
 ```csharp
 public Task<SomeType> GrainMethod5()
@@ -138,11 +138,11 @@ public Task GrainMethod6()
 ### Grain Reference
 
 A Grain Reference is a proxy object that implements the same grain interface as the corresponding grain class.
-It encapsulates a logical identity (type and unique key) of the target grain.
-A grain reference is what is used for making calls to the target grain.
-Each grain reference is for a single grain (a single instance of the grain class), but one can create multiple independent references for the same grain.
+It encapsulates the logical identity (type and unique key) of the target grain.
+A grain reference is used for making calls to the target grain.
+Each grain reference is to a single grain (a single instance of the grain class), but one can create multiple independent references to the same grain.
 
-Since a grain reference represents a logical identity of the target grain, it is independent from the physical location of the grain, and stays valid even after a complete restart of the system.
+Since a grain reference represents the logical identity of the target grain, it is independent from the physical location of the grain, and stays valid even after a complete restart of the system.
 Developers can use grain references like any other .NET object.
 It can be passed to a method, used as a method return value, etc., and even saved to persistent storage.
 
@@ -174,7 +174,7 @@ Using the grain reference from the previous example, here's how to perform a gra
 Task joinGameTask = player.JoinGame(this);
 //The await keyword effectively makes the remainder of the method execute asynchronously at a later point (upon completion of the Task being awaited) without blocking the thread.
 await joinGameTask;
-//The next line will execute later, after joinGameTask is completed.
+//The next line will execute later, after joinGameTask has completed.
 players.Add(playerId);
 
 ```
@@ -204,9 +204,9 @@ await joinedTask;
 
 ### Virtual methods
 
-A grain class can optionally override `OnActivateAsync` and `OnDeactivateAsync` virtual methods that get invoked by the Orleans runtime upon activation and deactivation of each grain of the class.
+A grain class can optionally override `OnActivateAsync` and `OnDeactivateAsync` virtual methods; these are invoked by the Orleans runtime upon activation and deactivation of each grain of the class.
 This gives the grain code a chance to perform additional initialization and cleanup operations.
 An exception thrown by `OnActivateAsync` fails the activation process.
-While `OnActivateAsync`, if overridden, is always called as part of the grain activation process, `OnDeactivateAsync` is not guaranteed to get called in all situations, for example, in case of a server failure or other abnormal events.
+While `OnActivateAsync`, if overridden, is always called as part of the grain activation process, `OnDeactivateAsync` is not guaranteed to get called in all situations, for example, in case of a server failure or other abnormal event.
 Because of that, applications should not rely on `OnDeactivateAsync` for performing critical operations such as persistence of state changes.
-They should use it only for best effort operations.
+They should use it only for best-effort operations.
