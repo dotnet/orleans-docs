@@ -128,7 +128,7 @@ Here is an implementation of [IStorageSerializationPicker](https://github.com/do
 [StorageSerializationPicker](https://github.com/dotnet/orleans/blob/master/src/AdoNet/Orleans.Persistence.AdoNet/Storage/Provider/StorageSerializationPicker.cs) will be used. An example of changing the data storage format
 or using serializers can be seen at [RelationalStorageTests](https://github.com/dotnet/orleans/blob/master/test/Extensions/TesterAdoNet/StorageTests/Relational/RelationalStorageTests.cs).
 
-Currently, there is no method to expose this to the Orleans application as there is no method to access the framework-created [AdoNetGrainStorage](https://github.com/dotnet/orleans/blob/master/src/AdoNet/Orleans.Persistence.AdoNet/Storage/Provider/AdoNetGrainStorage.cs).
+Currently, there is no method to expose the serialization picker to the Orleans application as there is no method to access the framework-created [AdoNetGrainStorage](https://github.com/dotnet/orleans/blob/master/src/AdoNet/Orleans.Persistence.AdoNet/Storage/Provider/AdoNetGrainStorage.cs).
 
 ## Goals of the design
 
@@ -182,14 +182,14 @@ data (e.g. `IDENTITY`). Information that distinguishes row data should build on 
 
 ### 8. Make the design easy to test
 
-Creating a new backend should ideally be as easy as translating one of the deployment scripts, adding a new connection string to tests (assuming default
-parameters), check if a given database is installed, and then run the tests against it.
+Creating a new backend should ideally be as easy as translating one of the existing deployment scripts into the SQL dialect of the backend you are trying to target, adding a new connection string to the tests (assuming default
+parameters), checking to see if a given database is installed, and then runing the tests against it.
 
 ### 9. Taking into account the previous points, make both porting scripts for new backends and modifying already-deployed backend scripts as transparent as possible
 
 ## Realization of the goals
 
-The Orleans framework does not have a knowledge of deployment-specific hardware (which hardware may change during active deployment), the change of data during the deployment life-cycle, and certain vendor-specific features which are only usable in certain situations. For this reason, the interface between the database and Orleans should adhere to a minimum set of abstractions and rules to meet these goals, make it robust against misuse, and make it easy to test if needed.
+The Orleans framework does not have a knowledge of deployment-specific hardware (which hardware may change during active deployment), the change of data during the deployment life-cycle, or certain vendor-specific features which are only usable in certain situations. For this reason, the interface between the database and Orleans should adhere to the minimum set of abstractions and rules to meet these goals, make it robust against misuse, and make it easy to test if needed.
 Runtime Tables, Cluster Management and the concrete [membership protocol implementation](https://github.com/dotnet/orleans/blob/master/src/Orleans/SystemTargetInterfaces/IMembershipTable.cs). Also, the SQL Server implementation contains SQL Server edition-specific tuning.
 The interface contract between the database and Orleans is defined as follows:
 
@@ -202,10 +202,10 @@ The interface contract between the database and Orleans is defined as follows:
 4. **Version** &ndash; or **ETag** in application code &ndash; for Orleans, this represents a unique version.
    The type of its actual implementation is not important as long as it represents a unique version. In the implementation, Orleans code expects a signed 32-bit integer.
 5. For the sake of being explicit and removing ambiguity, Orleans expects some queries to return either **TRUE as > 0** value
-   or **FALSE as = 0** value. That is, affected rows or such do not matter. If an error is raised or an exception is thrown,
+   or **FALSE as = 0** value. That is, the number of affected or returned rows does not matter. If an error is raised or an exception is thrown,
    the query **must** ensure the entire transaction is rolled back, and may either return FALSE or propagate the exception.
 6. Currently, all but one query are single-row inserts or updates (note, one could replace ``UPDATE`` queries with ``INSERT``, provided the associated
-   ``SELECT`` queries perfomed the last write) except for statistics inserts. Statistic insert, as defined by ``InsertOrleansStatisticsKey``, writes the statistics in batches of the predefined maximum size using ``UNION ALL`` for all databases except for Oracle, for which a ``UNION ALL FROM DUAL`` construct is used. ``InsertOrleansStatisticsKey`` is the only query that defines template-like parameters, which Orleans duplicates as many times as there are parameters with differing values.
+   ``SELECT`` queries performed the last write).
 
 Database engines support in-database programming. This is similar to the idea of loading an executable script and invoking it to execute database operations. In pseudocode it could be depicted as:
 
