@@ -5,7 +5,7 @@ title: Persistence
 
 # Persistence
 
-Grains can have multiple named persistent data objects associated with them. This state is loaded from storage during grain activation so that they are available during requests. Grain persistence uses an extensible plugin model so that storage providers for any database can be used. This persistence model is designed for simplicity and is not intended to cover all data access patterns. Grains can also access databases directly, without using the grain persistence model.
+Grains can have multiple named persistent data objects associated with them. These state objects are loaded from storage during grain activation so that they are available during requests. Grain persistence uses an extensible plugin model so that storage providers for any database can be used. This persistence model is designed for simplicity, and is not intended to cover all data access patterns. Grains can also access databases directly, without using the grain persistence model.
 
 ![A grain can have multiple persisted data objects each stored in a different storage system](~/images/grain_state_1.png)
 
@@ -14,17 +14,17 @@ In the above diagram, UserGrain has a *Profile* state and a *Cart* state, each o
 ## Goals
 
 1. Multiple named persistent data objects per grain.
-2. Multiple configured storage providers each of which can have different configuration and be backed by a different storage system.
+2. Multiple configured storage providers, each of which can have different configuration and be backed by a different storage system.
 3. Storage providers can be developed and published by the community.
-4. Storage providers have complete control over how they store grain state data in persistent backing store. Corollary: Orleans is not providing a comprehensive ORM storage solution, but allows custom storage providers to support specific ORM requirements as and when required.
+4. Storage providers have complete control over how they store grain state data in persistent backing store. Corollary: Orleans is not providing a comprehensive ORM storage solution, but instead allows custom storage providers to support specific ORM requirements as and when required.
 
 ## Packages
 
 Orleans grain storage providers can be found on [NuGet](https://www.nuget.org/packages?q=Orleans+Persistence). Officially maintained packages include:
 
-* [Microsoft.Orleans.Persistence.AdoNet](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AdoNet) for SQL databases and other storage systems supported by ADO.NET. For more information, see [ADO.NET Grain Persistence](relational_storage.md).
-* [Microsoft.Orleans.Persistence.AzureStorage](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AzureStorage) for Azure Storage including Azure Blob Storage, Azure Table Storage, and Azure CosmosDB via the Azure Table Storage API. For more information, see [Azure Storage Grain Persistence](azure_storage.md).
-* [Microsoft.Orleans.Persistence.DynamoDB](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.DynamoDB) for Amazon DynamoDB. For more information, see [Amazon DynamoDB Grain Persistence](dynamodb_storage.md).
+* [Microsoft.Orleans.Persistence.AdoNet](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AdoNet) is for SQL databases and other storage systems supported by ADO.NET. For more information, see [ADO.NET Grain Persistence](relational_storage.md).
+* [Microsoft.Orleans.Persistence.AzureStorage](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AzureStorage) is for Azure Storage, including Azure Blob Storage, Azure Table Storage, and Azure CosmosDB, via the Azure Table Storage API. For more information, see [Azure Storage Grain Persistence](azure_storage.md).
+* [Microsoft.Orleans.Persistence.DynamoDB](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.DynamoDB) is for Amazon DynamoDB. For more information, see [Amazon DynamoDB Grain Persistence](dynamodb_storage.md).
 
 ## API
 
@@ -60,14 +60,14 @@ public class UserGrain : Grain, IUserGrain
 }
 ```
 
-Different grain types can use different configured storage providers, even if both are the same type: for example, two different Azure Table Storage provider instances, connected to different Azure Storage accounts.
+Different grain types can use different configured storage providers, even if both are the same type; for example, two different Azure Table Storage provider instances, connected to different Azure Storage accounts.
 
 ### Reading State
 
-Grain state will automatically be read when the grain is activated, but grains are responsible for explicitly triggering the write for any changed grain state as and when necessary.
+Grain state will automatically be read when the grain is activated, but grains are responsible for explicitly triggering the write for any changed grain state when necessary.
 
-If a grain wishes to explicitly re-read the latest state for this grain from backing store, the grain should call the `ReadStateAsync()` method.
-This will reload the grain state from persistent store, via the storage provider, and the previous in-memory copy of the grain state will be overwritten and replaced when the `ReadStateAsync()` `Task` completes.
+If a grain wishes to explicitly re-read the latest state for this grain from the backing store, the grain should call the `ReadStateAsync()` method.
+This will reload the grain state from the persistent store via the storage provider, and the previous in-memory copy of the grain state will be overwritten and replaced when the `ReadStateAsync()` `Task` completes.
 
 The value of the state is accessed using the `State` property. For example, the following method accesses the profile state declared in the code above:
 
@@ -75,9 +75,9 @@ The value of the state is accessed using the `State` property. For example, the 
 public Task<string> GetNameAsync() => Task.FromResult(_profile.State.Name);
 ```
 
-There is no need to call `ReadStateAsync()` during normal operation: the state is loaded automatically during activation. However, `ReadStateAsync()` can be used to refresh state which is modified externally.
+There is no need to call `ReadStateAsync()` during normal operation; the state is loaded automatically during activation. However, `ReadStateAsync()` can be used to refresh state which is modified externally.
 
-See the [Failure Modes](#FailureModes) section below for details of error handling mechanisms.
+See the [Failure Modes](#FailureModes) section below for details of error-handling mechanisms.
 
 ### Writing State
 
@@ -144,7 +144,7 @@ Persistent state can be added to a grain in two primary ways:
 1. By injecting `IPersistentState<TState>` into the grain's constructor
 2. By inheriting from `Grain<TState>`
 
-The recommended way to add storage to a grain is by injecting `IPersistentState<TState>` into the grain's constructor with an associated `[PersistentState("stateName", "providerName")]` attribute. For details on [`Grain<TState>`, see below](#using-grainlttstategt-to-add-storage-to-a-grain). This is still supported but is considered legacy.
+The recommended way to add storage to a grain is by injecting `IPersistentState<TState>` into the grain's constructor with an associated `[PersistentState("stateName", "providerName")]` attribute. For details on [`Grain<TState>`, see below](#using-grainlttstategt-to-add-storage-to-a-grain). This is still supported, but is considered legacy.
 
 Declare a class to hold our grain's state:
 
@@ -200,20 +200,20 @@ public class UserGrain : Grain, IUserGrain
 
 ### Failure modes for read operations
 
-Failures returned by the storage provider during the initial read of state data for that particular grain will result in the activate operation for that grain to be failed; in this case, there will _not_ be any call to that grain’s `OnActivateAsync()` life cycle callback method.
-The original request to that grain which caused the activation will be faulted back to the caller the same way as any other failure during grain activation.
-Failures encountered by the storage provider to read state data for a particular grain will result in the `ReadStateAsync()` `Task` to be faulted.
-The grain can choose to handle or ignore that faulted `Task`, just like any other `Task` in Orleans.
+Failures returned by the storage provider during the initial read of state data for that particular grain will result in failure of the activate operation for that grain; in such case, there will _not_ be any call to that grain’s `OnActivateAsync()` life cycle callback method.
+The original request to the grain which caused the activation will be faulted back to the caller, the same way as any other failure during grain activation.
+Failures encountered by the storage provider when reading state data for a particular grain will result in an exception from `ReadStateAsync()` `Task`.
+The grain can choose to handle or ignore the `Task` exception, just like any other `Task` in Orleans.
 
 Any attempt to send a message to a grain which failed to load at silo startup time due to a missing / bad storage provider config will return the permanent error `Orleans.BadProviderConfigException`.
 
 ### Failure modes for write operations
 
-Failures encountered by the storage provider to write state data for a particular grain will result in the `WriteStateAsync()` `Task` to be faulted.
-Usually, this will mean the grain call will be faulted back to the client caller provided the `WriteStateAsync()` `Task` is correctly chained in to the final return `Task` for this grain method.
-However, it will be possible for certain advanced scenarios to write grain code to specifically handle such write errors, just like they can handle any other faulted `Task`.
+Failures encountered by the storage provider when writing state data for a particular grain will result in an exception thrown by `WriteStateAsync()` `Task`.
+Usually this means that the grain call exception will be thrown back to the client caller, provided the `WriteStateAsync()` `Task` is correctly chained in to the final return `Task` for this grain method.
+However, it is possible in certain advanced scenarios to write grain code to specifically handle such write errors, just like they can handle any other faulted `Task`.
 
-Grains that execute error-handling / recovery code _must_ catch exceptions / faulted `WriteStateAsync()` `Task`s and not re-throw to signify that they have successfully handled the write error.
+Grains that execute error-handling / recovery code _must_ catch exceptions / faulted `WriteStateAsync()` `Task`s and not re-throw them, to signify that they have successfully handled the write error.
 
 ## Recommendations
 
