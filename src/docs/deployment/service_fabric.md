@@ -11,6 +11,13 @@ A sample which demonstrates hosting on Service Fabric is available at [Samples/2
 
 Hosting support is available in the `Microsoft.Orleans.Hosting.ServiceFabric` package. It allows an Orleans Silo to run as a Service Fabric `ICommunicationListener`. The Silo lifecycle follows the typical communication listener lifecycle: it is initialized via the `ICommunicationListener.OpenAsync` method and is gracefully terminated via the `ICommunicationListener.CloseAsync` method or abruptly terminated via the `ICommunicationListener.Abort` method.
 
+Official clustering support is available from various packages including:
+* `Microsoft.Orleans.Clustering.AzureStorage`
+* `Microsoft.Orleans.Clustering.AdoNet`
+* `Microsoft.Orleans.Clustering.DynamoDB`
+
+There are also several third-party packages available for other services such as CosmosDB, Kubernetes, Redis and Aerospike. More information about cluster management can be found [here](https://dotnet.github.io/orleans/docs/implementation/cluster_management.html). This example makes use of the `Microsoft.Orleans.Clustering.AzureStorage` package to utilize Azure Storage.
+
 `OrleansCommunicationListener` provides the `ICommunicationListener` implementation. The recommended approach is to create the communication listener using `OrleansServiceListener.CreateStateless(Action<StatelessServiceContext, ISiloHostBuilder> configure)` in the `Orleans.Hosting.ServiceFabric` namespace.
 
 Each time the communication listener is opened, the `configure` delegate passed to `CreateStateless` is invoked to configure the new Silo.
