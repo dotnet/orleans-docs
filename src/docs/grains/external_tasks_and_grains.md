@@ -66,9 +66,9 @@ Below is sample code that demonstrates the usage of `TaskScheduler.Current`, `Ta
    }
 ```
 
-### Advanced Example - making a grain call from code that runs on a thread pool
+### Example - making a grain call from code that runs on a thread pool
 
-An even more advanced scenario is a piece of grain code that needs to “break out” of the Orleans task scheduling model and run on a thread pool (or some other, non-Orleans context), but still needs to call another grain. If you try to make a grain call but are not within an Orleans context, you will get an exception that says you are "trying to send a message on a silo not from within a grain and not from within a system target (RuntimeContext is not set to SchedulingContext)".
+Another scenario is a piece of grain code that needs to “break out” of the Orleans task scheduling model and run on a thread pool (or some other, non-Orleans context), but still needs to call another grain. Grain calls can be made from non-Orleans contexts without extra ceremony.
 
 Below is code that demonstrates how a grain call can be made from a piece of code that runs inside a grain but not in the grain context.
 
@@ -77,20 +77,14 @@ Below is code that demonstrates how a grain call can be made from a piece of cod
    {
         // Grab the Orleans task scheduler
         var orleansTs = TaskScheduler.Current;
+        var fooGrain = this.GrainFactory.GetGrain<IFooGrain>(0);
         Task<int> t1 = Task.Run(async () =>
         {
              // This code runs on the thread pool scheduler, not on Orleans task scheduler
              Assert.AreNotEqual(orleansTS, TaskScheduler.Current);
-             // You can do whatever you need to do here. Now let's say you need to make a grain call.
-             Task<Task<int>> t2 = Task.Factory.StartNew(() =>
-             {
-                // This code runs on the Orleans task scheduler since we specified the scheduler: orleansTs.
-                Assert.AreEqual(orleansTS, TaskScheduler.Current);
-                return GrainFactory.GetGrain<IFooGrain>(0).MakeGrainCall();
-             }, CancellationToken.None, TaskCreationOptions.None, scheduler: orleansTs);
+             int res = await fooGrain.MakeGrainCall();
 
-             int res = await (await t2); // double await, unrelated to Orleans, just part of TPL APIs.
-             // This code runs back on the thread pool scheduler, not on the Orleans task scheduler
+             // This code continues on the thread pool scheduler, not on the Orleans task scheduler
              Assert.AreNotEqual(orleansTS, TaskScheduler.Current);
              return res;
         } );
