@@ -61,8 +61,6 @@ namespace MySiloHost {
         static ISiloHost CreateSilo() {
             return new SiloHostBuilder()
                 .Configure(options => options.ClusterId = "MyTestCluster")
-                /// Prevent the silo from automatically stopping itself when the cancel key is pressed.
-                .Configure<ProcessExitHandlingOptions>(options => options.FastKillOnProcessExit = false)
                 .UseDevelopmentClustering(options => options.PrimarySiloEndpoint = new IPEndPoint(IPAddress.Loopback, 11111))
                 .ConfigureLogging(b => b.SetMinimumLevel(LogLevel.Debug).AddConsole())
                 .Build();
