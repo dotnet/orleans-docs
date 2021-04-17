@@ -28,7 +28,7 @@ clientBuilder.AddSimpleMessageStreamProvider("SMSProvider");
 ---
 **NOTE**
 
-By default, messages that are passed over the Simple Message Stream are considered immutable, and may be passed my reference to other grains.  To turn off this behavior, you must config the SMS provider to turn off `OptimizeForImmutableData`
+By default, messages that are passed over the Simple Message Stream are considered immutable, and may be passed by reference to other grains.  To turn off this behavior, you must config the SMS provider to turn off `OptimizeForImmutableData`
 
 ```
 siloBuilder
