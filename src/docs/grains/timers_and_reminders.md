@@ -30,7 +30,7 @@ public IDisposable RegisterTimer(
 
 Cancel the timer by disposing it.
 
-A timer will cease to trigger if the activation is deactivated or when a fault occurs and its silo crashes.
+A timer will cease to trigger if the grain is deactivated or when a fault occurs and its silo crashes.
 
 Important Considerations
 
