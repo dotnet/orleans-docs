@@ -3,7 +3,7 @@
     {
       "docset_name": "dotnet-orleans",
       "build_source_folder": "./src/docs",
-      "build_output_subfolder": ".",
+      "build_output_subfolder": "./src/docs",
       "locale": "en-us",
       "monikers": [],
       "moniker_ranges": [],
