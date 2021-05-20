@@ -67,7 +67,8 @@
         "repo": "https://github.com/dotnet/orleans-docs",
         "branch": "main"
       },
-	  "_gitUrlPattern": "github"
+	    "_gitUrlPattern": "github",
+      "author": ""
     },
     "sitemap": {
       "baseUrl": "https://dotnet.github.io/orleans"
