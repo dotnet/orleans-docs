@@ -41,7 +41,11 @@
     "globalMetadata": {
       "breadcrumb_path": "/dotnet/orleans/breadcrumb/toc.json",
       "extendBreadcrumb": true,
-      "feedback_system": "None"
+      "feedback_system": "None",
+      "author": "bradygaster",
+      "ms.devlang": "dotnet",
+      "ms.prod": "dotnet",
+      "ms.topic": "conceptual"      
     },
     "fileMetadata": {},
     "template": [],

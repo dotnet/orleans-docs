@@ -68,7 +68,10 @@
         "branch": "main"
       },
 	    "_gitUrlPattern": "github",
-      "author": "bradygaster"
+      "author": "bradygaster",
+      "ms.devlang": "dotnet",
+      "ms.prod": "dotnet",
+      "ms.topic": "conceptual"
     },
     "sitemap": {
       "baseUrl": "https://dotnet.github.io/orleans"
