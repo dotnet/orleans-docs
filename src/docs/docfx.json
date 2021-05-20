@@ -43,6 +43,7 @@
       "extendBreadcrumb": true,
       "feedback_system": "None",
       "author": "bradygaster",
+      "ms.author": "bradyg",
       "ms.devlang": "dotnet",
       "ms.prod": "dotnet",
       "ms.topic": "conceptual"      

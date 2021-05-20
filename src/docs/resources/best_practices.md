@@ -89,7 +89,7 @@ This document is intended to capture some of the tried and proven application pa
 -   No thread blocking: All items must be Async (Task Asynchronous Programming
     (TAP))
 
--   [await](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/)
+-   [await](/dotnet/csharp/programming-guide/concepts/async/)
     is the best syntax to use when composing async operations
 
 -   Common Scenarios:
@@ -341,7 +341,7 @@ Scaling out and in
     
         -   `public HelloGrain(ILogger<HelloGrain> logger) {this.logger = logger;}`
 
-    -   [Microsoft.Extensions.Logging](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging?view=dotnet-plat-ext-3.1) is utilized for functional and flexible logging
+    -   [Microsoft.Extensions.Logging](/dotnet/api/microsoft.extensions.logging?view=dotnet-plat-ext-3.1) is utilized for functional and flexible logging
 
 Testing
     

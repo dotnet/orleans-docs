@@ -7,13 +7,13 @@ title: ADO.NET Grain Persistence
 
 Relational storage backend code in Orleans is built on generic ADO.NET functionality, and is consequently database vendor agnostic.
 The Orleans data storage layout has been explained already in Runtime Tables.
-Setting up the connection strings is done as explained in [Orleans Configuration Guide](../host/configuration_guide/index.md).
+Setting up the connection strings is done as explained in [Orleans Configuration Guide](../../host/configuration_guide/index.md).
 
 To make Orleans code function with a given relational database backend, the following is required:
 
 1. The appropriate ADO.NET library must be loaded into the process. This should be defined as usual, e.g. via the [DbProviderFactories](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/obtaining-a-dbproviderfactory) element in the application configuration.
 2. Configure the ADO.NET invariant via the `Invariant` property in the options.
-3. The database needs to exist and be compatible with the code. This is done by running a vendor-specific database creation script. For more information, see [ADO.NET Configuration](../host/configuration_guide/adonet_configuration.md).
+3. The database needs to exist and be compatible with the code. This is done by running a vendor-specific database creation script. For more information, see [ADO.NET Configuration](../../host/configuration_guide/adonet_configuration.md).
 
 The ADO .NET grain storage provider allows you to store the grain state in relational databases.
 Currently, the following databases are supported:
@@ -29,7 +29,7 @@ First, install the base package:
 Install-Package Microsoft.Orleans.Persistence.AdoNet
 ```
 
-Read the [ADO.NET Configuration](../host/configuration_guide/adonet_configuration.md) article for information on configuring your database, including the corresponding ADO.NET Invariant and the setup scripts.
+Read the [ADO.NET Configuration](../../host/configuration_guide/adonet_configuration.md) article for information on configuring your database, including the corresponding ADO.NET Invariant and the setup scripts.
 
 The following is an example of how to configure an ADO.NET storage provider via `ISiloHostBuilder`:
 
@@ -44,7 +44,7 @@ var siloHostBuilder = new SiloHostBuilder()
 ```
 
 Essentially, you only need to set the database-vendor-specific connection string and an
-`Invariant` (see [ADO.NET Configuration](../host/configuration_guide/adonet_configuration.md)) that identifies the vendor. You may also choose the format in which the data
+`Invariant` (see [ADO.NET Configuration](../../host/configuration_guide/adonet_configuration.md)) that identifies the vendor. You may also choose the format in which the data
 is saved, which may be either binary (default), JSON, or XML. While binary is the most compact
 option, it is opaque, and you will not be able to read or work with the data. JSON is the
 recommended option.
@@ -216,7 +216,7 @@ const string queryFromOrleansQueryTableWithSomeKey = "SELECT column1, column2 FR
 TExpected queryResult = SpecificQuery12InOrleans<TExpected>(query, Param1, Param2);
 ```
 
-These principles are also [included in the database scripts](../host/configuration_guide/adonet_configuration.md).
+These principles are also [included in the database scripts](../../host/configuration_guide/adonet_configuration.md).
 
 ## Some ideas on applying customized scripts
 
