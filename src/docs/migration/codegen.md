@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Code Generation in Orleans 2.0
 ---
 

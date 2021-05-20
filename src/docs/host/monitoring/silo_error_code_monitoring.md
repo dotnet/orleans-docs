@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Silo Error Code Monitoring
 ---
 

@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Orleans Architecture - Principles and Approach I
 ---
 

@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Migration from Orleans 1.5 to 2.0
 ---
 

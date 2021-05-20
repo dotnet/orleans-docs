@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Shutting down Orleans
 ---
 

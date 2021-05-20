@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Serialization and Writing Custom Serializers
 uid: serialization
 ---

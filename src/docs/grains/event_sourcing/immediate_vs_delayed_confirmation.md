@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Immediate vs. Delayed Confirmation
 ---
 
