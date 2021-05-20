@@ -68,7 +68,7 @@
         "branch": "main"
       },
 	    "_gitUrlPattern": "github",
-      "author": ""
+      "author": "bradygaster"
     },
     "sitemap": {
       "baseUrl": "https://dotnet.github.io/orleans"
