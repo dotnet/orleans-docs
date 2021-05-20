@@ -12,7 +12,7 @@ Some components with such behaviors include grains, silos, and clients.
 To address this, a general component lifecycle pattern has been introduced.
 This pattern consists of an observable lifecycle, which is responsible for signaling on stages of a component’s startup and shutdown, and lifecycle observers which are responsible for performing startup or shutdown operations at specific stages.
 
-See also [Grain Lifecycle](~/docs/grains/grain_lifecycle.md) and [Silo Lifecycle](~/docs/host/silo_lifecycle.md).
+See also [Grain Lifecycle](../grains/grain_lifecycle.md) and [Silo Lifecycle](../host/silo_lifecycle.md).
 
 ## Observable Lifecycle
 

@@ -7,7 +7,7 @@ title: Grain Lifecycle
 
 ## Overview
 
-Orleans grains use an observable lifecycle (See [Orleans Lifecycle](~/docs/implementation/orleans_lifecycle.md)) for ordered activation and deactivation.
+Orleans grains use an observable lifecycle (See [Orleans Lifecycle](../implementation/orleans_lifecycle.md)) for ordered activation and deactivation.
 This allows grain logic, system components and application logic to be started and stopped in an ordered manner during grain activation and collection.
 
 ### Stages

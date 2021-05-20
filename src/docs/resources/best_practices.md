@@ -173,7 +173,7 @@ extensible storage functionality.
 -   Orleans.IGrainState is extended by a .NET interface which contains fields
     that should be included in the grain’s persisted state.
 
--   Grains are persisted by using [IPersistentState\<TState\>](~/docs/grains/grain_persistence/index.md) is extended by the grain class that adds a strongly typed State property into the grain’s base class.
+-   Grains are persisted by using [IPersistentState\<TState\>](../grains/grain_persistence/index.md) is extended by the grain class that adds a strongly typed State property into the grain’s base class.
 
 -   The initial State.ReadStateAsync() automatically occurs prior to
     ActiveAsync() has been called for a grain.
@@ -347,7 +347,7 @@ Testing
     
 -   Microsoft.Orleans.TestingHost NuGet package contains TestCluster which can be used to create an in-memory cluster, comprised of two silos by default, which can be used to test grains.
     
--   Additional information can be found [here](~/docs/tutorials_and_samples/testing.md)
+-   Additional information can be found [here](../tutorials_and_samples/testing.md)
 
 Troubleshooting
 

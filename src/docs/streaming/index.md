@@ -87,7 +87,7 @@ Event order also depends on a particular stream provider. In SMS streams, the pr
 
 ## Streams Implementation
 
-The [Orleans Streams Implementation](~/docs/implementation/streams_implementation/index.md) provides a high-level overview of the internal implementation.
+The [Orleans Streams Implementation](../implementation/streams_implementation/index.md) provides a high-level overview of the internal implementation.
 
 ## Code Samples
 
@@ -97,4 +97,4 @@ More examples of how to use streaming APIs within a grain can be found [here](ht
 ## More Material
 
 * [Orleans Virtual Meetup about Streams](https://www.youtube.com/watch?v=eSepBlfY554)
-* [Orleans Streaming Presentation from Virtual Meetup](~/docs/resources/presentations/Orleans%20Streaming%20-%20Virtual%20meetup%20-%205-22-2015.pptx)
+* [Orleans Streaming Presentation from Virtual Meetup](../resources/presentations/Orleans%20Streaming%20-%20Virtual%20meetup%20-%205-22-2015.pptx)

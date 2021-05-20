@@ -18,7 +18,7 @@ The [`Microsoft.Orleans.Hosting.Kubernetes`](https://www.nuget.org/packages/Micr
 * Early in the startup process, the silo will probe Kubernetes to find which silos do not have corresponding pods and mark those silos as dead.
 * The same process will occur at runtime for a subset of all silos, in order to remove the load on Kubernetes' API server. By default, 2 silos in the cluster will watch Kubernetes.
 
-Note that the Kubernetes hosting package does not use Kubernetes for clustering. For clustering, a separate clustering provider is still needed. For more information on configuring clustering, see the [Server configuration](~/docs/host/configuration_guide/server_configuration.md) documentation.
+Note that the Kubernetes hosting package does not use Kubernetes for clustering. For clustering, a separate clustering provider is still needed. For more information on configuring clustering, see the [Server configuration](../host/configuration_guide/server_configuration.md) documentation.
 
 This functionality imposes some requirements on how the service is deployed:
 

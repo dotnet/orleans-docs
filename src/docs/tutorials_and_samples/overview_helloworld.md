@@ -13,7 +13,7 @@ Creating an Orleans app involves configuring the silo, configuring the client, a
 ## Configuring the silo
 
 Silos are configured programmatically via `SiloHostBuilder` and a number of supplemental option classes.
-A list of all of the options can be found [here.](~/docs/host/configuration_guide/list_of_options_classes.md)
+A list of all of the options can be found [here.](../host/configuration_guide/list_of_options_classes.md)
 
 ```csharp
 [...]
@@ -77,7 +77,7 @@ Similar to the silo, the client is configured via `ClientBuilder` and a similar 
 | `.UseLocalhostClustering()` | Same as for SiloHost |
 | `ClusterOptions` | Same as for SiloHost |
 
-A more in-depth guide to configuring your client can be found [in the Client Configuration section of the Configuration Guide.](~/docs/host/configuration_guide/client_configuration.md)
+A more in-depth guide to configuring your client can be found [in the Client Configuration section of the Configuration Guide.](../host/configuration_guide/client_configuration.md)
 
 ## Writing a grain
 
@@ -87,7 +87,7 @@ Grains are objects that represent application entities.
 Just like in the classic Object Oriented Programming, a grain encapsulates state of an entity and encodes its behavior in the code logic.
 Grains can hold references to each other and interact by invoking each other’s methods exposed via interfaces.
 
-You can read more about them in the [Core Concepts section of the Orleans documentation.](~/docs/grains/index.md)
+You can read more about them in the [Core Concepts section of the Orleans documentation.](../grains/index.md)
 
 This is the main body of code for the Hello World grain:
 
@@ -106,7 +106,7 @@ namespace HelloWorld.Grains
 }
 ```
 
-A grain class implements one or more grain interfaces, as you can read [here, in the Grains section.](~/docs/grains/index.md)
+A grain class implements one or more grain interfaces, as you can read [here, in the Grains section.](../grains/index.md)
 
 ```csharp
 [...]

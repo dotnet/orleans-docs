@@ -7,7 +7,7 @@ title: Silo Lifecycle
 
 # Overview
 
-Orleans silo uses an observable lifecycle (See [Orleans Lifecycle](~/docs/implementation/orleans_lifecycle.md)) for ordered startup and shutdown of Orleans systems as well as application layer components.
+Orleans silo uses an observable lifecycle (See [Orleans Lifecycle](../implementation/orleans_lifecycle.md)) for ordered startup and shutdown of Orleans systems as well as application layer components.
 
 ## Stages
 
