@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Orleans - Thinking Big and Small
 ---
 

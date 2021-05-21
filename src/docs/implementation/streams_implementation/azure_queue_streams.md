@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Azure Queue Streams Implementation Details
 ---
 

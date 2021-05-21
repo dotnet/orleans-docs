@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Local development configuration
 ---
 

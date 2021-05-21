@@ -9,7 +9,6 @@
         "exclude": [
           "**/obj/**",
           "**/includes/**",
-          "**/resources/presentations/**",
           "_themes/**",
           "_themes.pdf/**",
           "**/docfx.json",
@@ -30,7 +29,6 @@
         "exclude": [
           "**/obj/**",
           "**/includes/**",
-          "**/resources/presentations/**",
           "_themes/**",
           "_themes.pdf/**",
           "**/docfx.json",
@@ -43,12 +41,7 @@
     "globalMetadata": {
       "breadcrumb_path": "/dotnet/orleans/breadcrumb/toc.json",
       "extendBreadcrumb": true,
-      "feedback_system": "None",
-      "author": "bradygaster",
-      "ms.author": "bradyg",
-      "ms.devlang": "dotnet",
-      "ms.prod": "dotnet",
-      "ms.topic": "conceptual"      
+      "feedback_system": "None"
     },
     "fileMetadata": {},
     "template": [],

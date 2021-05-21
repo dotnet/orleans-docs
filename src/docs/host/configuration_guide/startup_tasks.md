@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Startup Tasks
 ---
 # Startup Tasks

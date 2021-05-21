@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Using Azure Web Apps with Azure Cloud Services
 ---
 

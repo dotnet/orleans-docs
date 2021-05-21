@@ -1,4 +1,5 @@
 ﻿---
+layout: page
 title: Transactions in Orleans 2.0
 ---
 

@@ -1,6 +1,3 @@
----
-title: Compatible grains
----
 # Compatible grains
 
 When an existing grain activation is about to process a request, the runtime will check if the version

@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Frequently Asked Questions
 ---
 [//]: # (TODO: after files are rearranged and checked for accuracy, put links back)

@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Configuring ADO.NET Providers
 ---
 

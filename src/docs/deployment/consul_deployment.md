@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Using Consul as a Membership Provider
 ---
 
@@ -13,10 +14,10 @@ There is a very detailed overview of Consul including comparisons with similar s
 Consul is written in GO and is [open source](https://github.com/hashicorp/consul); compiled downloads are available for [Mac OS X, FreeBSD, Linux, Solaris and Windows](https://www.consul.io/downloads.html)
 
 ## Why Choose Consul?
-As an [Orleans Membership Provider](../implementation/cluster_management.md), Consul is a good choice when you need to deliver an **on-premise solution** which does not require your potential customers to have existing infrastructure **and** a co-operative IT provider.
+As an [Orleans Membership Provider](~/docs/implementation/cluster_management.md), Consul is a good choice when you need to deliver an **on-premise solution** which does not require your potential customers to have existing infrastructure **and** a co-operative IT provider.
 Consul is a very lightweight single executable, has no dependencies and as such can easily be built into your own middleware solution.
 And when Consul is already your solution for discovering, checking and maintaining your microservices, it makes sense to fully integrate with Orleans membership for simplicity and ease of operation.
-We therefore implemented a membership table in Consul (also known as "Orleans Custom System Store"), which fully integrates with Orleans's [Cluster Management](../implementation/cluster_management.md).
+We therefore implemented a membership table in Consul (also known as "Orleans Custom System Store"), which fully integrates with Orleans's [Cluster Management](~/docs/implementation/cluster_management.md).
 
 ## Setting up Consul
 There is very extensive documentation available on [Consul.io](https://www.consul.io) about setting up a stable Consul cluster and it doesn't make sense to repeat that here; however for your convenience we include this guide so you can very quickly get Orleans running with a standalone Consul agent.
@@ -108,7 +109,7 @@ If you are interested in using Consul for your own service discovery there are [
 
 The Membership Table Provider makes use of [Consul's Key/Value store](https://www.consul.io/intro/getting-started/kv.html) functionality with CAS.
 When each Silo starts it registers two KV entries, one which contains the Silo details and one which holds the last time the Silo reported it was alive (the latter refers to diagnostics "I am alive" entries and not to failure detection hearbeats which are sent directly between the silos and are not written into the table).
-All writes to the table are performed with CAS to provide concurrency control, as necessitated by Orleans's [Cluster Management Protocol](../implementation/cluster_management.md).
+All writes to the table are performed with CAS to provide concurrency control, as necessitated by Orleans's [Cluster Management Protocol](~/docs/implementation/cluster_management.md).
 Once the Silo is running you can view these entries in your web browser [here](http://localhost:8500/v1/kv/?keys), this will display something like:
 
 ```js
@@ -159,7 +160,7 @@ When the Clients connect, they read the KVs for all silos in the cluster in one 
 
 ### Orleans Extended Membership Protocol (Table Version & ETag)
 Consul KV currrently does not currently support atomic updates.
-Therefore, the Orleans Consul Membership Provider only implements the the Orleans Basic Membership Protocol, as described [here](../implementation/cluster_management.md) and does not support the Extended Membership Protocol.  This Extended protocol was introduced as an additional, but not essential, silo connectivity validation and as a foundation to functionality that has not yet been implemented.
+Therefore, the Orleans Consul Membership Provider only implements the the Orleans Basic Membership Protocol, as described [here](~/docs/implementation/cluster_management.md) and does not support the Extended Membership Protocol.  This Extended protocol was introduced as an additional, but not essential, silo connectivity validation and as a foundation to functionality that has not yet been implemented.
 Providing your infrastructure is correctly configured you will not experience any detrimental effect of the lack of support.
 
 ### Multiple Datacenters

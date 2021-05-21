@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Amazon DynamoDB Grain Persistence
 ---
 

@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Implementation Details
 ---
 # Implementation Details Overview

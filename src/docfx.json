@@ -1,14 +1,11 @@
 {
   "build": {
-    "markdownEngineName": "markdig",
     "content": [
       {
         "files": [
           "**/**.yml",
           "**/**.md"
         ],
-        "src": "docs",
-        "dest": ".",
         "exclude": [
           "readme.md",
           "obj/**",
@@ -56,8 +53,7 @@
     ],
     "dest": "../_site",
     "template": [
-      "default",
-      "template"
+      "default", "template"
     ],
     "noLangKeyword": false,
     "globalMetadata": {
@@ -65,13 +61,10 @@
       "_enableSearch": true,
       "_gitContribute": {
         "repo": "https://github.com/dotnet/orleans-docs",
-        "branch": "main"
+        "branch": "master"
       },
-	    "_gitUrlPattern": "github",
-      "author": "bradygaster",
-      "ms.devlang": "dotnet",
-      "ms.prod": "dotnet",
-      "ms.topic": "conceptual"
+	  "_gitUrlPattern": "github",
+    "_docfxVersion": "2"
     },
     "sitemap": {
       "baseUrl": "https://dotnet.github.io/orleans"

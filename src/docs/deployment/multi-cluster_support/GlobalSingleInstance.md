@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Global-Single-Instance Grains
 ---
 
