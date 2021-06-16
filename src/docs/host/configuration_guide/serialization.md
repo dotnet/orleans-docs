@@ -298,7 +298,7 @@ internal class UserSerializer
     {
         var result = new User();
 
-        // Record 'result' immediately after constructing it. As with with the deep copier, this
+        // Record 'result' immediately after constructing it. As with the deep copier, this
         // allows for cyclic references and de-duplication.
         context.RecordObject(result);
 

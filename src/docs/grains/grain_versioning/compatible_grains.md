@@ -9,7 +9,7 @@ The default behavior to determine if two versions are compatible is determined b
 
 ### Definition
 
-A grain interface version Vn can be be backward compatible with Vm if:
+A grain interface version Vn can be backward compatible with Vm if:
 
   - The name of the interface didn't change (or the overridden typecode)
   - All public methods present in the Vm version are in the Vn version. __It is important that
@@ -36,7 +36,7 @@ with V1:
 A grain interface version Vn can be fully compatible with Vm if:
 
   - Vn is backward compatible with Vm
-  - No public methods where added in the Vn version
+  - No public methods were added in the Vn version
 
 If Vn is fully compatible with Vm then Vm is also fully compatible with Vn.
 

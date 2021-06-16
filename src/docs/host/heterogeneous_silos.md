@@ -48,7 +48,7 @@ For testing purposes, you can use the property `ExcludedGrainTypes` in `GrainCla
 ## Limitations
 
 * Connected clients will not be notified if the set of supported Grain Types changed. In the previous example:
-	* If Silo 4 leaves the cluster, the client will still try to make calls to grain of type `E`. It will fail at runtime with a OrleansException.
-	* If the client was connected to the cluster before Silo 4 joined it, the client will not be able to make calls to grain of type `E`. It will fail with an ArgumentException
+	* If Silo 4 leaves the cluster, the client will still try to make calls to grain of type `E`. It will fail at runtime with an `OrleansException`.
+	* If the client was connected to the cluster before Silo 4 joined it, the client will not be able to make calls to grain of type `E`. It will fail with an `ArgumentException`
 * Stateless grains are not supported: all silos in the cluster must support the same set of stateless grains.
 * `ImplicitStreamSubscription` are not supported and thus only ["Explicit Subscriptions"](~/docs/streaming/streams_programming_APIs.md) can be used in Orleans Streams.

@@ -38,7 +38,7 @@ For example, to inject a multi-cluster configuration that consists of the three 
    mgtGrain.InjectMultiClusterConfiguration(clusterlist, "my comment here"));
 ```
 
-The first argument to `InjectMultiClusterConfiguration` is an enumerable of cluster ids, which is going to define the new multi-cluster configuration. The second argument is an (optional) comment string that can be used to tag configurations with arbitrary information, such as who injected them why. 
+The first argument to `InjectMultiClusterConfiguration` is an enumerable of cluster ids, which is going to define the new multi-cluster configuration. The second argument is an (optional) comment string that can be used to tag configurations with arbitrary information, such as who injected them and why. 
 
 There is an optional third argument, a boolean called `checkForLaggingSilosFirst`, which defaults to true. It means that the system performs a best-effort check to see if there are any silos anywhere that have not caught up to the current configuration yet, and rejects the change if it finds such a silo. This helps to detect violations of the restriction that only one configuration change should be pending at a time (though it cannot guarantee it under all circumstances).
 

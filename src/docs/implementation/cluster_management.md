@@ -144,7 +144,7 @@ For all liveness types the common configuration variables are defined in `Global
 
 3. `DeathVoteExpirationTimeout` - Expiration time in seconds for death vote in the membership table. Default is 120 seconds
 
-4. `NumMissedProbesLimi`t - The number of missed "I am alive" heartbeat messages from a silo or number of un-replied probes that lead to suspecting this silo as dead. Default is 3.
+4. `NumMissedProbesLimit` - The number of missed "I am alive" heartbeat messages from a silo or number of un-replied probes that lead to suspecting this silo as dead. Default is 3.
 
 5. `NumProbedSilos` - The number of silos each silo probes for liveness. Default is 3.
 
