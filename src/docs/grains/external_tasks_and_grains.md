@@ -51,7 +51,7 @@ Below is sample code that demonstrates the usage of `TaskScheduler.Current`, `Ta
         // Since await was executed in Orleans task scheduler context, we are now back to that context.
         Assert.AreEqual(orleansTS, TaskScheduler.Current);
 
-        // Example of using ask.Factory.StartNew with a custom scheduler to escape from the Orleans scheduler
+        // Example of using Task.Factory.StartNew with a custom scheduler to escape from the Orleans scheduler
         Task t2 = Task.Factory.StartNew(() =>
         {
              // This code runs on the MyCustomSchedulerThatIWroteMyself scheduler, not on the Orleans task scheduler

@@ -129,8 +129,8 @@ var client = new ClientBuilder()
     .UseStaticClustering(gateways)
     .Configure<ClusterOptions>(options =>
     {
-        options.ClusterId = "dev";
-        options.ServiceId = "AdventureApp";
+      options.ClusterId = "Cluster42";
+      options.ServiceId = "MyAwesomeService";
     })
     .ConfigureLogging(logging => logging.AddConsole())
     .Build();
