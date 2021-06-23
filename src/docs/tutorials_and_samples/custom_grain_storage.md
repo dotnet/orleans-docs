@@ -69,11 +69,6 @@ namespace GrainStorage
         {
             throw new NotImplementedException();
         }
-
-        public void Participate(ISiloLifecycle lifecycle)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
 ```
