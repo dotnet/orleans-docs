@@ -22,7 +22,7 @@ The samples can be downloaded from [GitHub](https://github.com/dotnet/orleans/tr
 ## [Hello World](overview_helloworld.md)
 
 An Orleans version of the classic Hello World app.
-This demonstrates that while there is no such thing as "trivial" when you are dealing with distributed computing, Orleans makes it pretty straight-forward.=
+This demonstrates that while there is no such thing as "trivial" when you are dealing with distributed computing, Orleans makes it pretty straight-forward.
 
 ## [Adventure](Adventure.md)
 
