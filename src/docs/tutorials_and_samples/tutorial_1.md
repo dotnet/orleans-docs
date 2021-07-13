@@ -183,7 +183,7 @@ namespace OrleansBasics
 
 Finally, we need to configure a client for communicating with our grains, connect it to the the cluster (with a single silo in it), and invoke the grain.
 Note that the clustering configuration must match the one we used for the silo.
-There is more information about the client in the [Clusters and Clients](~/docs/host/index.md) section of the Orleans documentation.
+There is more information about the client in the [Clusters and Clients](~/docs/host/client.md) section of the Orleans documentation.
 
 ``` csharp
 using Microsoft.Extensions.Logging;
