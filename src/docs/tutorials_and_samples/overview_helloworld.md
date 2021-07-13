@@ -148,4 +148,4 @@ The grain returns the greeting as a response to OrleansClient, which OrleansClie
 
 ## Running the sample app
 
-To run the sample app, refer to the [Readme.](https://github.com/dotnet/orleans/tree/master/Samples/2.0/HelloWorld)
+To run the sample app, refer to the [Readme.](https://github.com/dotnet/orleans/tree/main/samples/HelloWorld)
