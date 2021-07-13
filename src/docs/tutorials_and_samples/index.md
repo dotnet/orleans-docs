@@ -17,7 +17,7 @@ The samples are self-contained, except where noted.
 You might need an Azure subscription for some of the samples.
 For the Azure-based samples, you will need to install the SDK.
 
-The samples can be downloaded from [GitHub](https://github.com/dotnet/orleans/tree/master/Samples).
+The samples can be downloaded from [GitHub](https://github.com/dotnet/orleans/tree/main/samples).
 
 ## [Hello World](overview_helloworld.md)
 
