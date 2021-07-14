@@ -1,3 +1,4 @@
-- name: Docs
-  tocHref: /
-  topicHref: /
+items:
+  - name: Docs
+    tocHref: /
+    topicHref: /

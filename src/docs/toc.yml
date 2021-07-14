@@ -1,231 +1,228 @@
-- name: Overview
-  href: index.md
-  homepage: index.md
-- name: Grains
-  items:
-    - name: Developing a Grain
-      href: grains/index.md
-    - name: Grain Identity
-      href: grains/grain_identity.md
-    - name: Grain Placement
-      href: grains/grain_placement.md
-    - name: Timers and Reminders
-      href: grains/timers_and_reminders.md
-    - name: Observers
-      href: grains/observers.md
-    - name: Reentrancy
-      href: grains/reentrancy.md
-    - name: Request Context
-      href: grains/request_context.md
-    - name: Code Generation
-      href: grains/code_generation.md
-    - name: Persistence
-      items:
-        - name: Grain Persistence
-          href: grains/grain_persistence/index.md
-        - name: Relational Storage (ADO.NET)
-          href: grains/grain_persistence/relational_storage.md
-        - name: Azure Storage
-          href: grains/grain_persistence/azure_storage.md
-        - name: Amazon DynamoDB Storage
-          href: grains/grain_persistence/dynamodb_storage.md
-    - name: Event Sourcing
-      items:
-        - name: Event Sourcing Overview
-          href: grains/event_sourcing/index.md
-        - name: JournaledGrain Basics
-          href: grains/event_sourcing/journaledgrain_basics.md
-        - name: JournaledGrain Diagnostics
-          href: grains/event_sourcing/journaledgrain_diagnostics.md
-        - name: Immediate/Delayed Confirmation
-          href: grains/event_sourcing/immediate_vs_delayed_confirmation.md
-        - name: Notifications
-          href: grains/event_sourcing/notifications.md
-        - name: Event Sourcing Configuration
-          href: grains/event_sourcing/event_sourcing_configuration.md
-        - name: Built-In Log-Consistency Providers
-          href: grains/event_sourcing/log_consistency_providers.md
-        - name: Replicated Instances
-          href: grains/event_sourcing/replicated_instances.md
-    - name: Advanced Features
-      items:
-        - name: External Tasks and Grains
-          href: grains/external_tasks_and_grains.md
-        - name: Interceptors
-          href: grains/interceptors.md
-        - name: GrainServices
-          href: grains/grainservices.md
-        - name: Stateless Worker Grains
-          href: grains/stateless_worker_grains.md
-        - name: Cancellation Tokens
-          href: grains/cancellation_tokens.md
-        - name: Transactions
-          href: grains/transactions.md
-        - name: Grain Lifecycle
-          href: grains/grain_lifecycle.md
-        - name: Interface Versioning
-          items:
-            - name: Overview
-              href: grains/grain_versioning/grain_versioning.md
-            - name: Backward Compatibility Guidelines
-              href: grains/grain_versioning/backward_compatibility_guidelines.md
-            - name: Compatible grains
-              href: grains/grain_versioning/compatible_grains.md
-            - name: Version selector strategy
-              href: grains/grain_versioning/version_selector_strategy.md
-            - name: Deploying New Versions of Grains
-              href: grains/grain_versioning/deploying_new_versions_of_grains.md
-- name: Streaming
-  items:
-    - name: Overview
-      href: streaming/index.md
-    - name: Streams-Quick-Start
-      href: streaming/streams_quick_start.md
-    - name: Streams Why
-      href: streaming/streams_why.md
-    - name: Streams Programming APIs
-      href: streaming/streams_programming_APIs.md
-    - name: Stream Providers
-      href: streaming/stream_providers.md
-- name: Host
-  items:
-    - name: Clients
-      href: host/client.md
-      homepage: host/client.md
-    - name: Silo Lifecycle
-      href: host/silo_lifecycle.md
-    - name: Heterogeneous Silos
-      href: host/heterogeneous_silos.md
-    - name: Grain Directory
-      href: host/grain_directory.md
-    - name: Configuration Guide
-      items:
-        - name: Configuration Guide
-          href: host/configuration_guide/index.md
-          homepage: index.md
-        - name: Local Development Configuration
-          href: host/configuration_guide/local_development_configuration.md
-        - name: Client Configuration
-          href: host/configuration_guide/client_configuration.md
-        - name: Server Configuration
-          href: host/configuration_guide/server_configuration.md
-        - name: Typical Configurations
-          href: host/configuration_guide/typical_configurations.md
-        - name: Options Classes
-          href: host/configuration_guide/list_of_options_classes.md
-        - name: Activation Garbage Collection
-          href: host/configuration_guide/activation_garbage_collection.md
-        - name: Configuring .NET Garbage Collection
-          href: host/configuration_guide/configuring_.NET_garbage_collection.md
-        - name: Configuring ADO.NET Providers
-          href: host/configuration_guide/configuring_ADO.NET_providers.md
-        - name: ADO.NET Database Configuration
-          href: host/configuration_guide/adonet_configuration.md
-        - name: Serialization
-          href: host/configuration_guide/serialization.md
-        - name: Startup Tasks
-          href: host/configuration_guide/startup_tasks.md
-        - name: Shutting Down Orleans
-          href: host/configuration_guide/shutting_down_orleans.md
-    - name: Monitoring
-      items:
-        - name: Runtime Monitoring
-          href: host/monitoring/index.md
-          homepage: index.md
-        - name: Silo Error Code Monitoring
-          href: host/monitoring/silo_error_code_monitoring.md
-        - name: Client Error Code Monitoring
-          href: host/monitoring/client_error_code_monitoring.md
-- name: Deployment
-  items:
-    - name: Running the Application
-      href: deployment/index.md
-    - name: Kubernetes
-      href: deployment/kubernetes.md
-    - name: Service Fabric
-      href: deployment/service_fabric.md
-    - name: Handling Failures
-      href: deployment/handling_failures.md
-    - name: Using Azure Web Apps with Azure Cloud Services
-      href: deployment/azure_web_apps_with_azure_cloud_services.md
-    - name: Troubleshooting Azure Cloud Services Deployments
-      href: deployment/troubleshooting_azure_cloud_services_deployments.md
-    - name: Consul Deployments
-      href: deployment/consul_deployment.md
-    - name: Troubleshooting Deployments
-      href: deployment/troubleshooting_deployments.md
-    - name: Multi-Cluster Support
-      items:
-      - name: Overview
-        href: deployment/multi-cluster_support/Overview.md
-      - name: Multi-Cluster Configuration
-        href: deployment/multi-cluster_support/MultiClusterConfiguration.md
-      - name: Gossip Channels
-        href: deployment/multi-cluster_support/GossipChannels.md
-      - name: Silo Configuration
-        href: deployment/multi-cluster_support/SiloConfiguration.md
-      - name: Global-Single-Instance Grains
-        href: deployment/multi-cluster_support/GlobalSingleInstance.md
-- name: Tutorials and Samples
-  items:
-    - name: Tutorial and Sample Overview
-      href: tutorials_and_samples/index.md
-    - name: Tutorial 1 - Orleans Basics
-      href: tutorials_and_samples/tutorial_1.md
-    - name: Unit Testing
-      href: tutorials_and_samples/testing.md
-    - name: Custom Grain Storage
-      href: tutorials_and_samples/custom_grain_storage.md
-    - name: Sample - Hello World Overview
-      href: tutorials_and_samples/overview_helloworld.md
-    - name: Sample - Adventure
-      href: tutorials_and_samples/Adventure.md
-- name: Implementation Details
-  items:
+metadata:
+  nodes_to_expand: ""
+items:
   - name: Overview
-    href: implementation/index.md
-  - name: Orleans Lifecycle
-    href: implementation/orleans_lifecycle.md
-  - name: Messaging Delivery Guarantees
-    href: implementation/messaging_delivery_guarantees.md
-  - name: Scheduler
-    href: implementation/scheduler.md
-  - name: Cluster Management
-    href: implementation/cluster_management.md
-  - name: Streams Implementation
+    href: index.md
+    homepage: index.md
+  - name: Grains
     items:
+      - name: Developing a Grain
+        href: grains/index.md
+      - name: Grain Identity
+        href: grains/grain_identity.md
+      - name: Grain Placement
+        href: grains/grain_placement.md
+      - name: Timers and Reminders
+        href: grains/timers_and_reminders.md
+      - name: Observers
+        href: grains/observers.md
+      - name: Reentrancy
+        href: grains/reentrancy.md
+      - name: Request Context
+        href: grains/request_context.md
+      - name: Code Generation
+        href: grains/code_generation.md
+      - name: Persistence
+        items:
+          - name: Grain Persistence
+            href: grains/grain_persistence/index.md
+          - name: Relational Storage (ADO.NET)
+            href: grains/grain_persistence/relational_storage.md
+          - name: Azure Storage
+            href: grains/grain_persistence/azure_storage.md
+          - name: Amazon DynamoDB Storage
+            href: grains/grain_persistence/dynamodb_storage.md
+      - name: Event Sourcing
+        items:
+          - name: Event Sourcing Overview
+            href: grains/event_sourcing/index.md
+          - name: JournaledGrain Basics
+            href: grains/event_sourcing/journaledgrain_basics.md
+          - name: JournaledGrain Diagnostics
+            href: grains/event_sourcing/journaledgrain_diagnostics.md
+          - name: Immediate/Delayed Confirmation
+            href: grains/event_sourcing/immediate_vs_delayed_confirmation.md
+          - name: Notifications
+            href: grains/event_sourcing/notifications.md
+          - name: Event Sourcing Configuration
+            href: grains/event_sourcing/event_sourcing_configuration.md
+          - name: Built-In Log-Consistency Providers
+            href: grains/event_sourcing/log_consistency_providers.md
+          - name: Replicated Instances
+            href: grains/event_sourcing/replicated_instances.md
+      - name: Advanced Features
+        items:
+          - name: External Tasks and Grains
+            href: grains/external_tasks_and_grains.md
+          - name: Interceptors
+            href: grains/interceptors.md
+          - name: GrainServices
+            href: grains/grainservices.md
+          - name: Stateless Worker Grains
+            href: grains/stateless_worker_grains.md
+          - name: Cancellation Tokens
+            href: grains/cancellation_tokens.md
+          - name: Transactions
+            href: grains/transactions.md
+          - name: Grain Lifecycle
+            href: grains/grain_lifecycle.md
+          - name: Interface Versioning
+            items:
+              - name: Overview
+                href: grains/grain_versioning/grain_versioning.md
+              - name: Backward Compatibility Guidelines
+                href: grains/grain_versioning/backward_compatibility_guidelines.md
+              - name: Compatible grains
+                href: grains/grain_versioning/compatible_grains.md
+              - name: Version selector strategy
+                href: grains/grain_versioning/version_selector_strategy.md
+              - name: Deploying New Versions of Grains
+                href: grains/grain_versioning/deploying_new_versions_of_grains.md
+  - name: Streaming
+    items:
+      - name: Overview
+        href: streaming/index.md
+      - name: Streams-Quick-Start
+        href: streaming/streams_quick_start.md
+      - name: Streams Why
+        href: streaming/streams_why.md
+      - name: Streams Programming APIs
+        href: streaming/streams_programming_APIs.md
+      - name: Stream Providers
+        href: streaming/stream_providers.md
+  - name: Host
+    items:
+      - name: Clients
+        href: host/client.md
+      - name: Silo Lifecycle
+        href: host/silo_lifecycle.md
+      - name: Heterogeneous Silos
+        href: host/heterogeneous_silos.md
+      - name: Grain Directory
+        href: host/grain_directory.md
+      - name: Configuration Guide
+        items:
+          - name: Configuration Guide
+            href: host/configuration_guide/index.md
+          - name: Local Development Configuration
+            href: host/configuration_guide/local_development_configuration.md
+          - name: Client Configuration
+            href: host/configuration_guide/client_configuration.md
+          - name: Server Configuration
+            href: host/configuration_guide/server_configuration.md
+          - name: Typical Configurations
+            href: host/configuration_guide/typical_configurations.md
+          - name: Options Classes
+            href: host/configuration_guide/list_of_options_classes.md
+          - name: Activation Garbage Collection
+            href: host/configuration_guide/activation_garbage_collection.md
+          - name: Configuring .NET Garbage Collection
+            href: host/configuration_guide/configuring_.NET_garbage_collection.md
+          - name: Configuring ADO.NET Providers
+            href: host/configuration_guide/configuring_ADO.NET_providers.md
+          - name: ADO.NET Database Configuration
+            href: host/configuration_guide/adonet_configuration.md
+          - name: Serialization
+            href: host/configuration_guide/serialization.md
+          - name: Startup Tasks
+            href: host/configuration_guide/startup_tasks.md
+          - name: Shutting Down Orleans
+            href: host/configuration_guide/shutting_down_orleans.md
+      - name: Monitoring
+        items:
+          - name: Runtime Monitoring
+            href: host/monitoring/index.md
+          - name: Silo Error Code Monitoring
+            href: host/monitoring/silo_error_code_monitoring.md
+          - name: Client Error Code Monitoring
+            href: host/monitoring/client_error_code_monitoring.md
+  - name: Deployment
+    items:
+      - name: Running the Application
+        href: deployment/index.md
+      - name: Kubernetes
+        href: deployment/kubernetes.md
+      - name: Service Fabric
+        href: deployment/service_fabric.md
+      - name: Handling Failures
+        href: deployment/handling_failures.md
+      - name: Using Azure Web Apps with Azure Cloud Services
+        href: deployment/azure_web_apps_with_azure_cloud_services.md
+      - name: Troubleshooting Azure Cloud Services Deployments
+        href: deployment/troubleshooting_azure_cloud_services_deployments.md
+      - name: Consul Deployments
+        href: deployment/consul_deployment.md
+      - name: Troubleshooting Deployments
+        href: deployment/troubleshooting_deployments.md
+      - name: Multi-Cluster Support
+        items:
+        - name: Overview
+          href: deployment/multi-cluster_support/Overview.md
+        - name: Multi-Cluster Configuration
+          href: deployment/multi-cluster_support/MultiClusterConfiguration.md
+        - name: Gossip Channels
+          href: deployment/multi-cluster_support/GossipChannels.md
+        - name: Silo Configuration
+          href: deployment/multi-cluster_support/SiloConfiguration.md
+        - name: Global-Single-Instance Grains
+          href: deployment/multi-cluster_support/GlobalSingleInstance.md
+  - name: Tutorials and Samples
+    items:
+      - name: Samples
+        href: tutorials_and_samples/index.md
+      - name: Tutorial 1 - Orleans Basics
+        href: tutorials_and_samples/tutorial_1.md
+      - name: Unit Testing
+        href: tutorials_and_samples/testing.md
+      - name: Custom Grain Storage
+        href: tutorials_and_samples/custom_grain_storage.md
+      - name: Sample - Hello World Overview
+        href: tutorials_and_samples/overview_helloworld.md
+  - name: Implementation Details
+    items:
+    - name: Overview
+      href: implementation/index.md
+    - name: Orleans Lifecycle
+      href: implementation/orleans_lifecycle.md
+    - name: Messaging Delivery Guarantees
+      href: implementation/messaging_delivery_guarantees.md
+    - name: Scheduling
+      href: implementation/scheduler.md
+    - name: Cluster Management
+      href: implementation/cluster_management.md
     - name: Streams Implementation
-      href: implementation/streams_implementation/index.md
-      homepage: implementation/streams_implementation/index.md
-    - name: Azure Queue streams
-      href: implementation/streams_implementation/azure_queue_streams.md
-  - name: Load Balancing
-    href: implementation/load_balancing.md
-  - name: Unit Testing
-    href: implementation/testing.md
-- name: Migration
-  items:
-    - name: Migration from Orleans 1.5
-      href: migration/migration-1.5.md
-    - name: Migration from Orleans 1.5 in Azure Cloud Services
-      href: migration/migration-azure-2.0.md
-    - name: Code Generation
-      href: migration/codegen.md
-- name: Resources
-  items:
-    - name: Resources Overview
-      href: resources/index.md
-    - name: Frequently Asked Questions
-      href: resources/frequently_asked_questions.md
-    - name: NuGet Packages
-      href: resources/nuget_packages.md
-    - name: Documentation Guidelines
-      href: resources/documentation_guidelines.md
-    - name: Best Practices
-      href: resources/best_practices.md
-    - name: Links
-      href: resources/links.md
-    - name: Presentations
-      href: resources/presentations/index.md
-    - name: Contributing
-      href: resources/contributing.md
+      items:
+      - name: Streams Implementation
+        href: implementation/streams_implementation/index.md
+      - name: Azure Queue streams
+        href: implementation/streams_implementation/azure_queue_streams.md
+    - name: Load Balancing
+      href: implementation/load_balancing.md
+    - name: Unit Testing
+      href: implementation/testing.md
+  - name: Migration
+    items:
+      - name: Migration from Orleans 1.5
+        href: migration/migration-1.5.md
+      - name: Migration from Orleans 1.5 in Azure Cloud Services
+        href: migration/migration-azure-2.0.md
+      - name: Code Generation
+        href: migration/codegen.md
+  - name: Resources
+    items:
+      - name: Resources Overview
+        href: resources/index.md
+      - name: Frequently Asked Questions
+        href: resources/frequently_asked_questions.md
+      - name: NuGet Packages
+        href: resources/nuget_packages.md
+      - name: Documentation Guidelines
+        href: resources/documentation_guidelines.md
+      - name: Best Practices
+        href: resources/best_practices.md
+      - name: Links
+        href: resources/links.md
+      - name: Presentations
+        href: resources/presentations/index.md
+      - name: Contributing
+        href: resources/contributing.md
