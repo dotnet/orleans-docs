@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Tutorial 1 Hello World
 ---
 

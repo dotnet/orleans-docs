@@ -43,8 +43,7 @@
     ],
     "overwrite": [
       {
-        "files": [
-        ],
+        "files": [],
         "exclude": [
           "obj/**",
           "_site/**"
@@ -53,7 +52,8 @@
     ],
     "dest": "../_site",
     "template": [
-      "default", "template"
+      "default",
+      "template"
     ],
     "noLangKeyword": false,
     "globalMetadata": {
@@ -63,8 +63,9 @@
         "repo": "https://github.com/dotnet/orleans-docs",
         "branch": "master"
       },
-	  "_gitUrlPattern": "github",
-    "_docfxVersion": "2"
+      "_gitUrlPattern": "github",
+      "_docfxVersion": "2",
+      "layout": "page"
     },
     "sitemap": {
       "baseUrl": "https://dotnet.github.io/orleans"

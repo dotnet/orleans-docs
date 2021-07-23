@@ -3,10 +3,11 @@
     "content": [
       {
         "files": [
-          "**/*.md",
-          "**/*.yml"
+          "**/**.yml",
+          "**/**.md"
         ],
         "exclude": [
+          "**/_site/**",
           "**/obj/**",
           "**/includes/**",
           "_themes/**",
@@ -23,24 +24,59 @@
     "resource": [
       {
         "files": [
+          "README.md",
+          "Build.cmd",
+          "Test.cmd",
+          "assets/**",
+          "images/**",
           "**/*.png",
-          "**/*.jpg"
+          "**/*.jpg",
+          "**/*.jpeg",
+          "**/*.svg",
+          "**/*.gif",
+          "**/*.ppt",
+          "**/*.pptx",
+          "**/*.pdf",
+          "logo.svg",
+          "logo-light.svg",
+          "tutorials_and_samples/**.png",
+          "blog/media/**.png",
+          "blog/media/**.jpg",
+          "google8df5bb4c968b406e.html"
         ],
         "exclude": [
           "**/obj/**",
-          "**/includes/**",
-          "_themes/**",
-          "_themes.pdf/**",
-          "**/docfx.json",
-          "_repo.en-us/**"
+          "**/_site/**"
         ]
       }
     ],
-    "overwrite": [],
-    "externalReference": [],
-    "globalMetadata": {},
-    "fileMetadata": {},
-    "template": [],
-    "dest": "dotnet-orleans"
+    "overwrite": [
+      {
+        "files": [],
+        "exclude": [
+          "**/obj/**",
+          "**/_site/**"
+        ]
+      }
+    ],
+    "dest": "../_site",
+    "template": [
+      "default",
+      "template"
+    ],
+    "noLangKeyword": false,
+    "globalMetadata": {
+      "_appTitle": "Microsoft Orleans Documentation",
+      "_enableSearch": true,
+      "_gitContribute": {
+        "repo": "https://github.com/dotnet/orleans-docs",
+        "branch": "main"
+      },
+      "_gitUrlPattern": "github",
+      "_docfxVersion": "2"
+    },
+    "sitemap": {
+      "baseUrl": "https://docs.microsoft.com/dotnet/orleans/"
+    }
   }
 }

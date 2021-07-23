@@ -1,5 +1,4 @@
 ---
-layout: page
 title: What's new in Orleans
 ---
 
