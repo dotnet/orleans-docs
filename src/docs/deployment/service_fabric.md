@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Service Fabric Hosting
 ---
 # Service Fabric Hosting

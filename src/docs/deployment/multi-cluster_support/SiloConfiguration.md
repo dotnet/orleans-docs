@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Multi-Cluster Silo Configuration
 ---
 

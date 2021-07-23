@@ -1,5 +1,4 @@
 ---
-layout: page
 title: External Tasks and Grains
 ---
 

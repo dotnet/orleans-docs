@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Docker Deployment
 ---
 
