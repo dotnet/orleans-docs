@@ -23,6 +23,7 @@ dotnet run --project src\OrleansClient
 The silo and client windows will display greetings to each other.
 
 ## How Orleans says Hello
+
 In this sample, a client connects with a grain, sends it a greeting and receives a greeting back.
 The client then prints that greeting and that's that.
 Simple enough in theory, but since there's distribution involved, there's a bit more to it.
@@ -54,7 +55,7 @@ public class HelloGrain : Orleans.Grain, HelloWorldInterfaces.IHello
 The class inherits from the base class `Grain`, and implements the communication interface defined earlier.
 Since there is nothing that the grain needs to wait on, the method is not declared `async` and instead returns its value using `Task.FromResult()`.
 
- The client, which orchestrates the grain code and is found in OrleansClient project, looks like this:
+The client, which orchestrates the grain code and is found in OrleansClient project, looks like this:
 
 ``` csharp
 //configure the client with proper cluster options, logging and clustering
