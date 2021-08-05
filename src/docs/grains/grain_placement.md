@@ -8,6 +8,8 @@ title: Grain Placement
 Orleans ensures that when a grain call is made there is an instance of that grain available in memory on some server in the cluster to handle the request.
 If the grain is not currently active in the cluster, Orleans picks one of the servers to activate the grain on.
 This is called grain placement.
+Placement is also one way that load is balanced: even placement of busy grains helps to even the workload across the cluster.
+
 The placement process in Orleans is fully configurable: developers can choose from a set of out-of-the-box placement policies such as random, prefer-local, and load-based, or custom logic can be configured.
 This allows for full flexibility in deciding where grains are created.
 For example, grains can be placed on a server close to resources which they need to operate on or close to other grains which they communicate with.
