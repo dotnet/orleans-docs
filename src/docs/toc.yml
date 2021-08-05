@@ -16,7 +16,7 @@ items:
         href: grains/timers_and_reminders.md
       - name: Observers
         href: grains/observers.md
-      - name: Reentrancy
+      - name: Request Scheduling
         href: grains/reentrancy.md
       - name: Request Context
         href: grains/request_context.md
