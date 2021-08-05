@@ -127,3 +127,11 @@ Users should maintain a reference for each observer which they do not want to be
 **Note:** Observers are inherently unreliable, since you don't get any response back to know if the message is received and processed or simply failed due to any condition which might arise in a distributed system.
 Because of that, your observers should poll the grain periodically or use any other mechanism to ensure that they received all messages which they should have received.
 In some situations you can afford to lose some messages and you don't need any additional mechanism, but if you need to make sure that all observers are always receiving the messages and are receiving all of them, both periodic resubscriptions and polling the observer grain can help to ensure eventual processing of all messages.
+
+## Execution model
+
+Implementations of `IGrainObserver` are registered via a call to `IGrainFactory.CreateObjectReference` and each call to that method creates a new reference which points to that implementation.
+Orleans will execute requests sent to each one of these references one-by-one, to completion.
+Observers are non-reentrant and therefore concurrent requests to an observer will not be interleaved by Orleans.
+If there are multiple observers which are receiving requests concurrently, those requests can execute in parallel.
+Execution of observer methods are not affected by attributes such as `[AlwaysInterleave]` or `[Reentrant]`: the execution model cannot be customized by a developer.
