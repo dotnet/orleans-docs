@@ -64,6 +64,8 @@ items:
             href: grains/cancellation_tokens.md
           - name: Transactions
             href: grains/transactions.md
+          - name: One-way Requests
+            href: grains/oneway.md
           - name: Grain Lifecycle
             href: grains/grain_lifecycle.md
           - name: Interface Versioning
