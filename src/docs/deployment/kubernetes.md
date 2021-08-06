@@ -162,3 +162,16 @@ For a primary application which is serving interactive load, we recommend not im
 It is important to note that requests and limits are substantially different in their meaning and where they are implemented.
 Before setting requests or limits, take the time to gain a detailed understanding of how they are implemented and enforced.
 For example, memory may not be measured uniformly between Kubernetes, the Linux kernel, and your monitoring system. CPU quotas may not be enforced in the way that you expect.
+
+## Troubleshooting
+
+1. In case of this error being returned by the silo on startup when using `Kubernetes.Hosting` 
+
+```cs 
+Unhandled exception. k8s.Exceptions.KubeConfigException: unable to load in-cluster configuration, KUBERNETES_SERVICE_HOST and KUBERNETES_SERVICE_PORT must be defined
+at k8s.KubernetesClientConfiguration.InClusterConfig()
+```
+
+make sure that:
+- `KUBERNETES_SERVICE_HOST` and `KUBERNETES_SERVICE_PORT` environment variables are set inside your pod. (you can check by ssh'ing to the pod and [listing](https://www.cyberciti.biz/faq/linux-list-all-environment-variables-env-command/) environment variables)
+- make sure you have `automountServiceAccountToken` set to true inside your `deployment.yaml`
