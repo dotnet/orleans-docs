@@ -165,13 +165,14 @@ For example, memory may not be measured uniformly between Kubernetes, the Linux 
 
 ## Troubleshooting
 
-1. In case of this error being returned by the silo on startup when using `Kubernetes.Hosting` 
+### Pods crash, complaining that `KUBERNETES_SERVICE_HOST and KUBERNETES_SERVICE_PORT must be defined`
 
-```cs 
+Full exception message: 
+``` 
 Unhandled exception. k8s.Exceptions.KubeConfigException: unable to load in-cluster configuration, KUBERNETES_SERVICE_HOST and KUBERNETES_SERVICE_PORT must be defined
 at k8s.KubernetesClientConfiguration.InClusterConfig()
 ```
 
-make sure that:
-- `KUBERNETES_SERVICE_HOST` and `KUBERNETES_SERVICE_PORT` environment variables are set inside your pod. (you can check by ssh'ing to the pod and [listing](https://www.cyberciti.biz/faq/linux-list-all-environment-variables-env-command/) environment variables)
-- make sure you have `automountServiceAccountToken` set to true inside your `deployment.yaml`
+* Check that `KUBERNETES_SERVICE_HOST` and `KUBERNETES_SERVICE_PORT` environment variables are set inside your Pod.
+You can check by executing the following command `kubectl exec -it <pod_name> /bin/bash -c env`.
+* Ensure that `automountServiceAccountToken` set to **true** on your Kubernetes `deployment.yaml`. For more information, see [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
