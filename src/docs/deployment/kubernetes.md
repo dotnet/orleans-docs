@@ -162,3 +162,17 @@ For a primary application which is serving interactive load, we recommend not im
 It is important to note that requests and limits are substantially different in their meaning and where they are implemented.
 Before setting requests or limits, take the time to gain a detailed understanding of how they are implemented and enforced.
 For example, memory may not be measured uniformly between Kubernetes, the Linux kernel, and your monitoring system. CPU quotas may not be enforced in the way that you expect.
+
+## Troubleshooting
+
+### Pods crash, complaining that `KUBERNETES_SERVICE_HOST and KUBERNETES_SERVICE_PORT must be defined`
+
+Full exception message: 
+``` 
+Unhandled exception. k8s.Exceptions.KubeConfigException: unable to load in-cluster configuration, KUBERNETES_SERVICE_HOST and KUBERNETES_SERVICE_PORT must be defined
+at k8s.KubernetesClientConfiguration.InClusterConfig()
+```
+
+* Check that `KUBERNETES_SERVICE_HOST` and `KUBERNETES_SERVICE_PORT` environment variables are set inside your Pod.
+You can check by executing the following command `kubectl exec -it <pod_name> /bin/bash -c env`.
+* Ensure that `automountServiceAccountToken` set to **true** on your Kubernetes `deployment.yaml`. For more information, see [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
