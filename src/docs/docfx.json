@@ -65,9 +65,9 @@
       },
       "_gitUrlPattern": "github",
       "_docfxVersion": "3",
+      "ms.prod": "orleans",
       "author": "ReubenBond",
-      "ms.author": "rebond",
-      "ms.prod": "orleans"
+      "ms.author": "rebond"
     },
     "sitemap": {
       "baseUrl": "https://docs.microsoft.com/dotnet/orleans/"
