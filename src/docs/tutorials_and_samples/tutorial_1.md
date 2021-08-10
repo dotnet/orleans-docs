@@ -2,7 +2,7 @@
 title: Tutorial One
 ---
 
-# Tutorial One - Creating a Minimal Orleans Application
+# Getting started with Orleans
 
 This tutorial provides step by step instructions for creating a basic functioning Orleans application.
 It is designed to be self-contained and minimalistic, with the following traits:

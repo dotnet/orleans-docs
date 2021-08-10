@@ -83,13 +83,16 @@ public class FileGrainStorageOptions
 
 The  create a constructor containing two fields, `storageName` to specify which grains should write using this storage `[StorageProvider(ProviderName = "File")]` and `directory` which would be the directory where the grain states will be saved.
 
-`IGrainFactory`, `ITypeResolver` will be used in the next section where we will initilize the storage.
+`IGrainFactory`, `ITypeResolver` will be used in the next section where we will initialize the storage.
 
 We also take two options as argument, our own `FileGrainStorageOptions` and the `ClusterOptions`. Those will be needed for the implementation of the storage functionalities.
 
-We also need `JsonSerializerSettings` as we are serializing and deserializing in Json format.
+We also need `JsonSerializerSettings` as we are serializing and deserializing in JSON format.
 
-_Json is an implementation detail, it is up to the developer to decide what serialization/deserialization protocol would fit the application. Another common format is binary format._
+<div class="NOTE">
+    <h5>NOTE</h5>
+    <p>JSON is an implementation detail here. It is up to the developer to decide what serialization/deserialization protocol would fit the application.</p>
+</div>
 
 ## Initializing the storage
 

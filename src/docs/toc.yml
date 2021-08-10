@@ -6,8 +6,12 @@ items:
     homepage: index.md
   - name: Grains
     items:
-      - name: Developing a Grain
+      - name: Grains
         href: grains/index.md
+#     - name: Grain Interfaces
+#       href: grains/grain-interfaces.md 
+#     - name: Grain Classes
+#       href: grains/grain-classes.md 
       - name: Grain Identity
         href: grains/grain_identity.md
       - name: Grain Placement
@@ -94,6 +98,8 @@ items:
         href: streaming/stream_providers.md
   - name: Host
     items:
+      - name: Servers
+        href: host/server.md
       - name: Clients
         href: host/client.md
       - name: Silo Lifecycle
