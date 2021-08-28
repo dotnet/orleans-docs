@@ -26,7 +26,8 @@ namespace Tests
         [Fact]
         public async Task SaysHelloCorrectly()
         {
-            var cluster = new TestCluster();
+            var builder = new TestClusterBuilder();
+            var cluster = builder.Build();
             cluster.Deploy();
 
             var hello = cluster.GrainFactory.GetGrain<IHelloGrain>(Guid.NewGuid());
@@ -50,7 +51,8 @@ public class ClusterFixture : IDisposable
 {
     public ClusterFixture()
     {
-        this.Cluster = new TestCluster();
+        var builder = new TestClusterBuilder();
+        var cluster = builder.Build();
         this.Cluster.Deploy();
     }
 
