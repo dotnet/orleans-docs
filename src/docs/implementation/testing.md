@@ -27,7 +27,6 @@ namespace Tests
         public async Task SaysHelloCorrectly()
         {
             var builder = new TestClusterBuilder();
-            builder.Options.ServiceId = Guid.NewGuid().ToString();
             var cluster = builder.Build();
             cluster.Deploy();
 
