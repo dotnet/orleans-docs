@@ -53,7 +53,6 @@ public class ClusterFixture : IDisposable
     public ClusterFixture()
     {
         var builder = new TestClusterBuilder();
-        builder.Options.ServiceId = Guid.NewGuid().ToString();
         var cluster = builder.Build();
         this.Cluster.Deploy();
     }
