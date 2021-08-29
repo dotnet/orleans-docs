@@ -131,9 +131,9 @@ public class ClusterFixture : IDisposable
     public TestCluster Cluster { get; private set; }
 }
 
-public class TestSiloConfigurations : ISiloBuilderConfigurator {
-    public void Configure(ISiloHostBuilder hostBuilder) {
-        hostBuilder.ConfigureServices(services => {
+public class TestSiloConfigurations : ISiloConfigurator {
+    public void Configure(ISiloBuilder siloBuilder) {
+        siloBuilder.ConfigureServices(services => {
             services.AddSingleton<T, Impl>(...);
         });
     }
