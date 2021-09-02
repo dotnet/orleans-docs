@@ -139,7 +139,7 @@ If `Connect` returns successfully, the cluster client is guaranteed to be usable
 ```csharp
 var client = new ClientBuilder()
     // ...
-    .Configure<GatewayOptions>(opts => GatewayListRefreshPeriod = TimeSpan.FromMinutes(10)) // Default is 1 min.
+    .Configure<GatewayOptions>(opts => opts.GatewayListRefreshPeriod = TimeSpan.FromMinutes(10)) // Default is 1 min.
     .Build();
 ```
 
