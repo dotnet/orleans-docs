@@ -17,8 +17,8 @@ For example, Azure Queues allow to create multiple queues, Event Hubs have multi
 
 ## Persistent Streams<a name="Persistent-Streams"></a>
 
-All Orleans Persistent Stream Providers share a common implementation [**`PersistentStreamProvider`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core/Streams/PersistentStreams/PersistentStreamProvider.cs).
-This generic stream provider needs be configured with a technology specific [**`IQueueAdapterFactory`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core/Streams/QueueAdapters/IQueueAdapterFactory.cs).
+All Orleans Persistent Stream Providers share a common implementation [**`PersistentStreamProvider`**](https://github.com/dotnet/orleans/blob/main/src/Orleans.Streaming/PersistentStreams/PersistentStreamProvider.cs).
+This generic stream provider needs be configured with a technology specific [**`IQueueAdapterFactory`**](https://github.com/dotnet/orleans/blob/main/src/Orleans.Streaming/QueueAdapters/IQueueAdapterFactory.cs).
 
 For instance, for testing purposes we have queue adapters that generate their own test data rather than reading the data from a queue.
 The code below shows how we configure a persistent stream provider to use our custom (generator) queue adapter.
@@ -40,11 +40,11 @@ The pulling agents run inside the same silos that host application grains and ar
 ### StreamQueueMapper and StreamQueueBalancer<a name="StreamQueueMapper-and-StreamQueueBalancer"></a>
 
 Pulling agents are parameterized with `IStreamQueueMapper` and `IStreamQueueBalancer`.
-[**`IStreamQueueMapper`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core/Streams/QueueAdapters/IStreamQueueMapper.cs)
+[**`IStreamQueueMapper`**](https://github.com/dotnet/orleans/blob/main/src/Orleans.Streaming/QueueAdapters/IStreamQueueMapper.cs)
 provides a list of all queues and is also responsible for mapping streams to queues.
 That way, the producer side of the Persistent Stream Provider knows into which queue to enqueue the message.
 
-[**`IStreamQueueBalancer`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core/Streams/PersistentStreams/IStreamQueueBalancer.cs)
+[**`IStreamQueueBalancer`**](https://github.com/dotnet/orleans/blob/main/src/Orleans.Streaming/PersistentStreams/IStreamQueueBalancer.cs)
 expresses the way queues are balanced across Orleans silos and agents.
 The goal is to assign queues to agents in a balanced way, to prevent bottlenecks and support elasticity.
 When a new silo is added to the Orleans cluster, queues are automatically rebalanced across the old and new silos.
@@ -71,7 +71,7 @@ SystemTargets are essentially runtime grains, are subject to single threaded con
 In contrast to grains, SystemTargets are not virtual: they are explicitly created (by the runtime) and are not location transparent.
 By implementing pulling agents as SystemTargets, the Orleans Streaming Runtime can rely on built-in Orleans features and can scale to a very large number of queues, since creating a new pulling agent is as cheap as creating a new grain.
 
-Every pulling agent runs a periodic timer that pulls from the queue (by invoking [**`IQueueAdapterReceiver`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core/Streams/QueueAdapters/IQueueAdapterReceiver.cs)) `GetQueueMessagesAsync()` method. The returned messages are put in the internal per-agent data structure called `IQueueCache`.
+Every pulling agent runs a periodic timer that pulls from the queue (by invoking [**`IQueueAdapterReceiver`**](https://github.com/dotnet/orleans/blob/main/src/Orleans.Streaming/QueueAdapters/IQueueAdapterReceiver.cs)) `GetQueueMessagesAsync()` method. The returned messages are put in the internal per-agent data structure called `IQueueCache`.
 Every message is inspected to find out its destination stream.
 The agent uses the Pub Sub to find out the list of stream consumers that subscribed to this stream. Once the consumer list is retrieved, the agent stores it locally (in its pub-sub cache) so it does not need to consult with Pub Sub on every message.
 The agent also subscribes to the pub-sub to receive notification of any new consumers that subscribe to that stream.
@@ -79,7 +79,7 @@ This handshake between the agent and the pub-sub guarantees **strong streaming s
 
 ### Queue Cache<a name="Queue-Cache"></a>
 
-[**`IQueueCache`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core/Streams/QueueAdapters/IQueueCache.cs) is an internal per-agent data structure that allows to decoupling dequeuing new events from the queue and delivering them to consumers.
+[**`IQueueCache`**](https://github.com/dotnet/orleans/blob/main/src/Orleans.Streaming/QueueAdapters/IQueueCache.cs) is an internal per-agent data structure that allows to decoupling dequeuing new events from the queue and delivering them to consumers.
 It also allows to decoupling delivery to different streams and to different consumers.
 
 Imagine a situation where one stream has 3 stream consumers and one of them is slow.
