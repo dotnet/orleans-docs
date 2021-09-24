@@ -40,7 +40,7 @@ A caller invokes the following call:
 
 ``` csharp
 var a = grainFactory.GetGrain("A");
-var b = grainFactory.GetGrain("A");
+var b = grainFactory.GetGrain("B");
 await a.CallOther(b);
 ```
 
@@ -60,7 +60,7 @@ Here is an example, based on the client issuing the following call:
 
 ``` csharp
 var a = grainFactory.GetGrain("A");
-var b = grainFactory.GetGrain("A");
+var b = grainFactory.GetGrain("B");
 
 // A calls B at the same time as B calls A.
 // This might deadlock, depending on the non-deterministic timing of events.
