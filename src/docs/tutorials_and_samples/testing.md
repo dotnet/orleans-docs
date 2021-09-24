@@ -27,7 +27,6 @@ namespace Tests
         public async Task SaysHelloCorrectly()
         {
             var builder = new TestClusterBuilder();
-            builder.Options.ServiceId = Guid.NewGuid().ToString();
             var cluster = builder.Build();
             cluster.Deploy();
 
@@ -52,7 +51,8 @@ public class ClusterFixture : IDisposable
 {
     public ClusterFixture()
     {
-        this.Cluster = new TestCluster();
+        var builder = new TestClusterBuilder();
+        var cluster = builder.Build();
         this.Cluster.Deploy();
     }
 
@@ -131,9 +131,9 @@ public class ClusterFixture : IDisposable
     public TestCluster Cluster { get; private set; }
 }
 
-public class TestSiloConfigurations : ISiloBuilderConfigurator {
-    public void Configure(ISiloHostBuilder hostBuilder) {
-        hostBuilder.ConfigureServices(services => {
+public class TestSiloConfigurations : ISiloConfigurator {
+    public void Configure(ISiloBuilder siloBuilder) {
+        siloBuilder.ConfigureServices(services => {
             services.AddSingleton<T, Impl>(...);
         });
     }
