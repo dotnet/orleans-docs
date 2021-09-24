@@ -2,9 +2,13 @@
 title: Runtime Monitoring
 ---
 
+# Orleans Logs
+
+Orleans leverages [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/) for all silo and client logs.
+
 # Runtime Monitoring
 
-Orleans output its runtime statistics and metrics through the `ITelemetryConsumer` interface.
+Orleans outputs its runtime statistics and metrics through the `ITelemetryConsumer` interface.
 Application can register one or more telemetry consumers with for their silos and clients, to receives statistics and metrics that Orleans runtime  periotically publishes.
 These can be consumers for popular telemetry analytics solutions or custom ones for any other destination and purpose.
 Three telemetry consumer are currently included in the Orleans codebase.
@@ -28,9 +32,25 @@ var siloHostBuilder = new SiloHostBuilder();
 siloHostBuilder.AddApplicationInsightsTelemetryConsumer("INSTRUMENTATION_KEY");
 ```
 
-client configuration code look like this: 
+Client configuration code look like this: 
 ```c#
 var clientBuilder = new ClientBuilder();
 //configure the clientBuilder with AITelemetryConsumer
 clientBuilder.AddApplicationInsightsTelemetryConsumer("INSTRUMENTATION_KEY");
+```
+
+To use a custom defined TelemetryConfiguration (which may have TelemetryProcessors, TelemetrySinks, etc.), silo configuration code looks like this: 
+```c#
+var siloHostBuilder = new SiloHostBuilder();
+var telemetryConfiguration = TelemetryConfiguration.CreateDefault();
+//configure the silo with AITelemetryConsumer
+siloHostBuilder.AddApplicationInsightsTelemetryConsumer(telemetryConfiguration);
+```
+
+Client configuration code look like this: 
+```c#
+var clientBuilder = new ClientBuilder();
+var telemetryConfiguration = TelemetryConfiguration.CreateDefault();
+//configure the clientBuilder with AITelemetryConsumer
+clientBuilder.AddApplicationInsightsTelemetryConsumer(telemetryConfiguration);
 ```
