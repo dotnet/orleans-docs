@@ -23,3 +23,33 @@ siloBuilder.AddDynamoDBGrainStorage(
         options.Service = /* Dynamo DB service name */;
     });
 ```
+To configure using AWS profile names you can use the following command and add the create information as needed.
+
+`cat ~/.aws/credentials`
+```
+[YOUR_PROFILE_NAME]
+aws_access_key_id = ***
+aws_secret_access_key = ***
+aws_security_token = ***
+aws_session_expiration = ***
+aws_session_token = ***
+```
+
+``` csharp
+siloBuilder.AddDynamoDBGrainStorage(
+  name: "profileStore",
+  configureOptions: options =>
+  {
+      options.UseJson = true;
+      options.AccessKey = "***";
+      options.SecretKey = "***";
+      options.Token = "***";
+      options.Service = "***";
+  });
+```
+For more information on AWS creditionals and named profiles:
+
+Accessing credentials and profiles:
+https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html#creds-locate
+Named profiles: 
+https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
