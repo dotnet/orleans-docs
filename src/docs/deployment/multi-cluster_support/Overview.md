@@ -4,7 +4,7 @@ title: Multi-Cluster Support
 
 # Multi-Cluster Support
 
-Orleans v.1.3.0 added support for federating several Orleans clusters into a loosely connected *multi-cluster* that acts like a single service. 
+Multi-Cluster support was removed in v2. The documentation below refers to Orleans v1. Orleans v.1.3.0 added support for federating several Orleans clusters into a loosely connected *multi-cluster* that acts like a single service. 
 
 Multi-clusters facilitate *geo-distribution* of a service, that is, make it easier to run an Orleans application in multiple data-centers around the world. Also, a multi-cluster can be run within a single datacenter to get better failure and performance isolation. 
 
