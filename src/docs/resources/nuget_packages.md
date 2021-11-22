@@ -270,7 +270,7 @@ PM> Install-Package Microsoft.Orleans.OrleansProviders
 
 Contains a set of persistence and stream providers that keep data in memory.
 Intended for testing.
-In general, not recommended for production use, unless data loss is care of a silo failure is acceptable.
+In general, not recommended for production use, unless data loss in case of a silo failure is acceptable.
 
 ### [Microsoft Orleans Testing Host Library](https://www.nuget.org/packages/Microsoft.Orleans.TestingHost/)
 
