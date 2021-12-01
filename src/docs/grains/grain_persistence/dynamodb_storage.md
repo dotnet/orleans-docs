@@ -23,8 +23,7 @@ siloBuilder.AddDynamoDBGrainStorage(
         options.Service = /* Dynamo DB service name */;
     });
 ```
-To configure using AWS profile names you can use the following command and add the create information as needed.
-
+If your authentication method requires token/non-default profile name, you can also define those properties like so:
 `cat ~/.aws/credentials`
 ```
 [YOUR_PROFILE_NAME]
@@ -43,8 +42,9 @@ siloBuilder.AddDynamoDBGrainStorage(
       options.UseJson = true;
       options.AccessKey = "***";
       options.SecretKey = "***";
-      options.Token = "***";
       options.Service = "***";
+      options.ProfileName = "***";
+      options.Token = "***";
   });
 ```
 For more information on AWS creditionals and named profiles:
