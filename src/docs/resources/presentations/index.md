@@ -32,3 +32,13 @@ title: Orleans Presentations
 * [Walk In Distributed Systems Park With Orleans]((FWDAYSKIEV2016)%20Walk.In.Distributed.Systems.Park.With.Orleans.pptx)
 
 * [Orleans at Microsoft by Reuben Bond - August 2020 (video)](https://www.youtube.com/watch?v=KhgYlvGLv9c)
+
+* [On .NET Live - Deep Dive into Microsoft Orleans - March 2021 (video)](https://www.youtube.com/watch?v=R0ODfwU6MzQ)
+
+* [Building real applications with Orleans February 2021 (video)](https://www.youtube.com/watch?v=8duFuggnj8o)
+
+* [Setting up Observability in Orleans June 2021 (video)](https://www.youtube.com/watch?v=GKXiGhFBd90)
+
+* [Supercharging your cloud applications with Orleans - November 2021 (video)](https://www.youtube.com/watch?v=wYXSZ9VAQCM)
+
+* [ASP.NET Community Standup - Scaling ASP.NET Core apps with Orleans November 2021 (video)](https://www.youtube.com/watch?v=zDLBrQjoOHo)
