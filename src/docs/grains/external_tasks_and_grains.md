@@ -50,12 +50,12 @@ Below is sample code that demonstrates the usage of `TaskScheduler.Current`, `Ta
    public async Task MyGrainMethod()
    {
         // Grab the grain's task scheduler
-        var scheduler = TaskScheduler.Current;
+        var orleansTS = TaskScheduler.Current;
         await TaskDelay(10000);
 
         // Current task scheduler did not change, the code after await is still running
         // in the same task scheduler.
-        Assert.AreEqual(scheduler, TaskScheduler.Current);
+        Assert.AreEqual(orleansTS, TaskScheduler.Current);
 
         Task t1 = Task.Run( () =>
         {
@@ -102,7 +102,7 @@ Below is code that demonstrates how a grain call can be made from a piece of cod
    public async Task MyGrainMethod()
    {
         // Grab the Orleans task scheduler
-        var scheduler = TaskScheduler.Current;
+        var orleansTS = TaskScheduler.Current;
         var fooGrain = this.GrainFactory.GetGrain<IFooGrain>(0);
         Task<int> t1 = Task.Run(async () =>
         {
