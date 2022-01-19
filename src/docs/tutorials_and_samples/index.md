@@ -49,6 +49,7 @@ Publishers send out short *"Chirp"* messages (not to be confused with *"Tweets"*
 * Grains which implement multiple grain interfaces
 * Reentrant grains, which allow for multiple grain calls to be executed concurrently, in a single-threaded, interleaving fashion
 * Using a *grain observer* (`IGrainObserver`) to receive push notifications from grains
+
 ## [GPS Tracker](https://github.com/dotnet/orleans/raw/main/samples/GPSTracker/#readme)
 
 <p align="center">
