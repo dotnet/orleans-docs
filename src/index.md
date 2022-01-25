@@ -3,7 +3,7 @@
 </p>
 
 [![NuGet](https://img.shields.io/nuget/v/Microsoft.Orleans.Core.svg?style=flat)](http://www.nuget.org/profiles/Orleans)
-![Discord](https://img.shields.io/discord/333727978460676096?color=4db798&label=Discord%20Chat&logoColor=4db798)
+[![Discord](https://img.shields.io/discord/333727978460676096?color=4db798&label=Discord%20Chat&logoColor=4db798)](https://aka.ms/orleans-discord)
 
 ### Orleans is a cross-platform framework for building robust, scalable distributed applications
 
