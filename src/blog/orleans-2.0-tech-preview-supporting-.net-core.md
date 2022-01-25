@@ -55,4 +55,4 @@ The sample is located here:
 Sample application running Orleans in Linux
 
 Enjoy it, play with it, and lets us know what you think, either as
-GitHub issues, PRs or just come hang out in our Gitter channel.
+GitHub issues, PRs or just come hang out in our [Discord chat](https://aka.ms/orleans-discord).
