@@ -20,6 +20,6 @@ siloBuilder.AddDynamoDBGrainStorage(
         options.UseJson = true;
         options.AccessKey = /* Dynamo DB access key */;
         options.SecretKey = /* Dynamo DB secret key */;
-        options.Service = /* Dynamo DB service name */;
+        options.Service = /* Dynamo DB region name such as "us-west-2" */;
     });
 ```
